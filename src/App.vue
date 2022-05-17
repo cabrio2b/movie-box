@@ -1,10 +1,16 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <ConnectPage />
 </template>
+
+<script>
+import ConnectPage from "./components/connectPage.vue";
+
+export default {
+  components: {
+    ConnectPage,
+  },
+};
+</script>
 
 <style>
 #app {
@@ -13,18 +19,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  margin-top: 60px;
 }
-
-nav {
-  padding: 30px;
+.flex: {
+  display:flex;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+  
 </style>
