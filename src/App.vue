@@ -1,16 +1,6 @@
 <template>
-  <ConnectPage />
+  <router-view />
 </template>
-
-<script>
-import ConnectPage from "./components/connectPage.vue";
-
-export default {
-  components: {
-    ConnectPage,
-  },
-};
-</script>
 
 <style>
 #app {
