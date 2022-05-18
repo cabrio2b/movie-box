@@ -9,8 +9,9 @@
                         <h2>Titre du film</h2>
                     </div>
                     <div class="containerCritique bgCouleurPrincipale">
-                        <div class="containerNotation">
-                            <p class="notation textCouleurPrincipale">4.8/5</p>
+                        <div class="containerLikes">
+                            <p>Likes:{{likes}}</p>
+                            <button @click="addLike">Like</button>
                             <p class="note">par critique 1</p>
                         </div>
                         <p class="critique">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel animi dignissimos ex architecto aperiam nemo repellendus magnam inventore incidunt, asperiores voluptate, facere officia quod ratione voluptatem in itaque quia temporibus.</p>
@@ -47,6 +48,20 @@
                     </div>
                 </div>
                 <!--/ Contenaire d'un film -->
+
+                                <!-- Contenaire d'un film -->
+                <div class="containerFilm">
+                    <div class="imageFilm">
+                        <h2>Titre du film</h2>
+                    </div>
+                    <div class="containerCritique bgCouleurPrincipale">
+                        <div class="containerNotation">
+                            <p class="notation textCouleurPrincipale">4.8/5</p>
+                            <p class="note">par critique 1</p>
+                        </div>
+                        <p class="critique">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel animi dignissimos ex architecto aperiam nemo repellendus magnam inventore incidunt, asperiores voluptate, facere officia quod ratione voluptatem in itaque quia temporibus.</p>
+                    </div>
+                </div>
             </div>
             <!--/ Contenaire fil d'actu general des films -->
         </div>
@@ -54,6 +69,19 @@
 
 <script>
 export default {
+
+
+    data() {
+        return {
+            likes: 0,
+        }
+    },
+    methods: {
+    addLike() {
+      this.likes += 1;
+    },
+  },
+
 
 };
 </script>
@@ -86,16 +114,16 @@ body {
 }
 
 .containerFilm {
-    border-left: 10px solid #D82C2C;
+    border-left: 10px solid #D30303;
     height: 100%;
 }
 
 .containerFilm:hover{
-    border-left: 10px solid #8a7b7b;
+    border-left: 10px solid #808080;
 }
 
 .imageFilm {
-    background-image: url(images/affiche_titanic.jpg);
+    /* background-image: url(images/affiche_titanic.jpg); */
     background-size: 100% auto;
     height: 100%;
 }
@@ -131,13 +159,13 @@ body {
 .critique::first-letter {
     font-size: 150%;
     font-weight: 600;
-    color: #D82C2C;
+    color: #D30303;
 }
 
 
 /* coloristaion */
 .textCouleurPrincipale {
-    color: #D82C2C;
+    color: #D30303;
 }
 .bgCouleurPrincipale {
     background-color: #00000015;
