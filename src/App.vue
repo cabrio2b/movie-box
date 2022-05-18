@@ -1,4 +1,8 @@
 <template>
+  <nav>
+    <router-link to="/">Connect</router-link>
+    <router-link to="/test">Test</router-link>
+  </nav>
   <router-view />
 </template>
 
@@ -12,7 +16,6 @@
   margin-top: 60px;
 }
 .flex: {
-  display:flex;
+  display: flex;
 }
-  
 </style>
