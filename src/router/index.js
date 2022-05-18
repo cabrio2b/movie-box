@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ConnectPageView from "@/views/ConnectPageView.vue";
 import TestView from "../views/TestView.vue";
+import FilActu from "@/views/FilActu.vue";
 
 const routes = [
   {
@@ -13,6 +14,12 @@ const routes = [
     path: "/test",
     name: "test",
     component: TestView,
+  },
+
+  {
+    path: "/FilActu",
+    name: "filActuFilms",
+    component: FilActu,
   },
 ];
 

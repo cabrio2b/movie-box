@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Connect</router-link>
     <router-link to="/test">Test</router-link>
+    <router-link to="/FilActu">Fil d'Actu</router-link>
   </nav>
   <router-view />
 </template>
