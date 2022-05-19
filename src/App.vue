@@ -1,16 +1,10 @@
 <template>
   <nav>
-<<<<<<< HEAD
     <router-link to="/">Connect</router-link>
     <router-link to="/test">Test</router-link>
     <router-link to="/FilActu">Fil d'Actu</router-link>
     <router-link to="/PageProfilView">Page Profil</router-link>
-=======
-    <router-link to="/">Connect |</router-link>
-    <router-link to="/test">Test |</router-link>
-    <router-link to="/FilActu">Fil d'Actu |</router-link>
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
->>>>>>> 49db9fda4954e02b1723895e36764f3908028b09
   </nav>
   <router-view />
 </template>
@@ -161,8 +155,6 @@ table {
   color: #2c3e50;
   margin-top: 10px;
 }
-<<<<<<< HEAD
-=======
 a {
   color: #808080;
   text-decoration: none;
@@ -178,7 +170,6 @@ button {
 hr {
   margin: 25px 0;
 }
->>>>>>> 49db9fda4954e02b1723895e36764f3908028b09
 .flex {
   display: flex;
 }
