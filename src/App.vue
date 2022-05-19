@@ -3,6 +3,7 @@
     <router-link to="/">Connect</router-link>
     <router-link to="/test">Test</router-link>
     <router-link to="/FilActu">Fil d'Actu</router-link>
+    <router-link to="/PageProfilView">Page Profil</router-link>
   </nav>
   <router-view />
 </template>
@@ -16,7 +17,7 @@
   color: #2c3e50;
   margin-top: 60px;
 }
-.flex: {
+.flex {
   display: flex;
 }
 </style>
