@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import ConnectPageView from "@/views/ConnectPageView.vue";
 import TestView from "../views/TestView.vue";
 import FilActu from "@/views/FilActu.vue";
+//import FicheFilmView from "../views/FicheFilmView.vue";
 
 const routes = [
   {
@@ -21,6 +22,12 @@ const routes = [
     name: "filActuFilms",
     component: FilActu,
   },
+
+  /*   {
+    path: "/fiche-film",
+    name: "FicheFilm",
+    component: FicheFilmView,
+  }, */
 ];
 
 const router = createRouter({

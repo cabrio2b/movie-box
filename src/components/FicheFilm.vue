@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import FilmID from "@components/FilmID.vue";
-import IsFilmFavorite from "@components/IsFilmFavorite.vue";
-import InfoSocialesFilm from "@components/InfoSocialesFilm.vue";
-import FilDiscussionFilm from "@components/FilDiscussionFilm.vue";
+import FilmID from "@/components/FilmID.vue";
+import IsFilmFavorite from "@/components/IsFilmFavorite.vue";
+import InfoSocialesFilm from "@/components/InfoSocialesFilm.vue";
+import FilDiscussionFilm from "@/components/FilDiscussionFilm.vue";
 
 export default {
   components: {

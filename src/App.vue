@@ -1,8 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">Connect</router-link>
-    <router-link to="/test">Test</router-link>
-    <router-link to="/FilActu">Fil d'Actu</router-link>
+    <router-link to="/">Connect |</router-link>
+    <router-link to="/test">Test |</router-link>
+    <router-link to="/FilActu">Fil d'Actu |</router-link>
+    <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
   </nav>
   <router-view />
 </template>
@@ -154,11 +155,11 @@ table {
   margin-top: 60px;
 }
 a {
-  color:#808080;
-  text-decoration:none;
+  color: #808080;
+  text-decoration: none;
 }
-a :hover{
-  color:#d30303;
+a :hover {
+  color: #d30303;
 }
 button {
   border: none;

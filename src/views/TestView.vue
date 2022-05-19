@@ -1,5 +1,7 @@
 <template>
-  <button @click="testFetch">Tester API</button>
+  <section id="viewTest">
+    <button @click="testFetch">Tester API</button>
+  </section>
 </template>
 
 <script>
@@ -10,6 +12,8 @@ export default {
       page: null,
       totalPages: null,
       message: "",
+      result: null,
+      token: true,
     };
   },
 
@@ -19,6 +23,7 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          //Authorization: "bearer token",
         },
         /*        body: JSON.stringify({
           posts: [],
@@ -31,15 +36,16 @@ export default {
         }), */
       };
       const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/moviebox/post?page=0&limit=5",
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts",
         options
       );
       const data = await response.json();
+      console.log(data);
 
-      this.result = data.success;
+      /* this.result = data.success;
       if (data.success === true) {
         this.token = data.token;
-      }
+      } */
     },
   },
 };
