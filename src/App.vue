@@ -7,10 +7,10 @@
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <router-link to="/test-crea-user">| Test Crea User |</router-link>
     <router-link to="/liste-films">| Liste des films |</router-link>
+    <router-link to="/recup">| Test Récup Données |</router-link>
   </nav>
   <router-view />
 </template>
-
 <style>
 
 #app {

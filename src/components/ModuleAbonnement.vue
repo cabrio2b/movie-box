@@ -6,7 +6,7 @@
       </div>
       <div class="inputContainer">
         <img src="@/assets/logoMbRondTexte.webp" alt="" />
-        <form @submit.prevent="submitConnexion">
+        <form @submit.prevent="createUtilisateur">
           <input
             type="text"
             v-model="lastname"
@@ -38,11 +38,11 @@
           </p>
           <div v-show="isPasswordValid">
             <input
-              type="password"
+              type="text"
               id="verifMdpUtilisateur"
               v-model="verifMpdUtilisateur"
               placeholder="Mot de passe"
-            />
+            /><!-- ICI EN TEXTE ET NON EN PASSWORD -->
             <p class="indications">
               <span class="verifNo" v-show="!verifMpdUtilisateurValid"
                 >Mots de passe sont différents</span
@@ -53,13 +53,7 @@
             </p>
           </div>
           <hr v-show="isPasswordValid" />
-          <button
-            @click="createUtilisateur"
-            class="btnCreate"
-            v-show="isPasswordValid"
-          >
-            s'abonner
-          </button>
+          <button class="btnCreate" v-show="isPasswordValid">S'abonner</button>
         </form>
       </div>
       <div class="decoRight"></div>
@@ -90,7 +84,6 @@ export default {
   },
   methods: {
     async createUtilisateur() {
-      console.log(this.email, this.verifMpdUtilisateur, this.firstname, this.lastname);
       const options = {
         method: "POST",
         headers: {
@@ -103,11 +96,18 @@ export default {
           lastname: this.lastname,
         }),
       };
-      console.log(this.email, this.verifMpdUtilisateur, this.firstname, this.lastname);
-      const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/moviebox/register",options);
+      console.log(
+        this.email,
+        this.verifMpdUtilisateur,
+        this.firstname,
+        this.lastname
+      );
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/register",
+        options
+      );
       const data = await response.json();
       // console.log(response);
-      
     },
   },
 };

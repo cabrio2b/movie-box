@@ -6,6 +6,7 @@ import FilActu from "@/views/FilActu.vue";
 //import FicheFilmView from "../views/FicheFilmView.vue";
 import TestCreationUserView from "@/views/TestCreationUserView.vue";
 import ListeFilmsPageView from "@/views/ListeFilmsPageView.vue";
+import RecupDonneesView from "@/views/RecupDonneesView.vue";
 
 const routes = [
   {
@@ -36,6 +37,12 @@ const routes = [
     path: "/liste-films",
     name: "ListeFilms",
     component: ListeFilmsPageView,
+  },
+
+  {
+    path: "/recup",
+    name: "RecupDonnees",
+    componenet: RecupDonneesView,
   },
 
   /* {
