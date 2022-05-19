@@ -11,7 +11,6 @@
       <div class="inputContainer">
         <img src="@/assets/logoMbRondTexte.webp" alt="" />
         <form @submit.prevent="submitConnexion">
-          <label for="eMail">Votre identifiant</label>
           <input type="mail" name="eMail" placeholder="Votre email" />
           <label for="mdp" placeholder="Votre email">Votre mot de passe</label>
           <input type="password" name="mdp" />
@@ -44,8 +43,6 @@ export default {
     // Methode de basculement sur création utilisateur
     btnAbonnement() {
       this.getVueModule = true;
-      console.log(this.getVueModule);
-      alert("entrer methode btnAbonnement");
     },
     
   },
