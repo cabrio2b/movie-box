@@ -23,17 +23,8 @@
 </template>
 
 <script>
-export default {
-    methods: {
-    // Methode de connexion utilisateur 
-    submitConnexion() {
-        alert("entrer methode submitConnexion")
-    },
-},
-}
-
-
-    
+export default {}
+ 
 </script>
 
 <style scoped>
