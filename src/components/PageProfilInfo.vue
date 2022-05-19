@@ -14,6 +14,9 @@ const PageProfilInfo = {
     lastname: String,
     age: Number,
   },
+  methods: {
+    changeMyProfil() {},
+  },
 };
 
 export default PageProfilInfo;
