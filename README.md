@@ -61,3 +61,9 @@ Commentaire posts[index].comments -> est un tableau
 ---
 
 **\* \***
+
+API cinéma utilisée : https://www.themoviedb.org/
+
+clé API : https://api.themoviedb.org/3/movie/550?api_key=a670fe06041314e9cdef071de7762ef3
+
+Documentation : https://developers.themoviedb.org/3/movies/get-movie-details

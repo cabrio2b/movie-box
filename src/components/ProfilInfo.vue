@@ -1,5 +1,5 @@
 <template>
-  <PageProfilInfo> firstname = "", lastname = "", age = "", </PageProfilInfo>
+  <PageProfilInfo :firstname:"" :lastname:"" :email:"" > </PageProfilInfo>
 </template>
 
 <script>
@@ -9,11 +9,8 @@ const ProfilInfo = {
   components: {
     PageProfilInfo,
   },
-  props: {
-    firstname: String,
-    lastname: String,
-    age: Number,
-  },
+  
+
 };
 export default ProfilInfo;
 </script>

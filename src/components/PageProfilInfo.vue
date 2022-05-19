@@ -3,7 +3,8 @@
     <button @click="changeMyProfil">Modifier</button>
     <h5>NOM: {{ fistname }}</h5>
     <h5>PRENOM: {{ lastname }}</h5>
-    <h5>AGE: {{ age }} ans</h5>
+    <h5>EMAIL : {{ email }}</h5>
+    <!--  <h5>AGE: {{ age }} ans</h5> -->
   </div>
 </template>
 
@@ -12,7 +13,9 @@ const PageProfilInfo = {
   props: {
     firstname: String,
     lastname: String,
-    age: Number,
+    email: String,
+    password: String,
+    // age: Number,
   },
   methods: {
     changeMyProfil() {},
