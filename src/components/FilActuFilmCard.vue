@@ -1,44 +1,42 @@
 <template>
-  <div>
-    <div class="filActuFilms-container">
-      <FilActuFilmCard
-        v-for="element in filActuFilmData"
-        :key="element.dt"
-
-        :filmTitle="element.apiInfo"
-        :post="element.apiInfo"
-        :user="element.apiInfo"
-      >
-      </FilActuFilmCard>
-    </div>
-  </div>
-
+            <!-- Contenaire generale des films -->   
+            <div class="filActuFilms">
+                <!-- Contenaire d'un film -->
+                <div class="containerFilm">
+                    <div class="imageFilm">
+                        <h2>{{filmTitle}}</h2>
+                        <!-- <img :src="" /> Ici Url API pour l'image du film -->
+                    </div>
+                    <!-- Contenaire d'un commentaire -->
+                    <div class="containerComments bgCouleurPrincipale">
+                        <p class ="post">{{post}}</p>
+                        <p class="user">{{user}}</p> 
+                    </div>
+                    <div class="containerLikes">
+                        <p>Likes:{{likes}}</p>
+                        <button @click="addLike">Like</button>
+                    </div>
+                </div>
+            </div>                 
 </template>
 
 <script>
-import FilActuFilmCard from "@/components/FilActuFilmCard.vue";
-
 export default {
-
-  components: {
-      FilActuFilmCard,
+  props: {
+    filmTitle: String,
+    post: String,
+    user: String,
+    
   },
 
  data() {
-    return {
-      filActuFilmData: [],
-    };
-  },
-
+        return {
+            likes: 0,
+        }
+    },
   methods: {
-    async getFilActu() {
-      const response = await fetch(
-        "https://api.cine.org/data"
-      );
-
-      const data = await response.json();
-
-      this.filActuFilmData = data.list;
+    addLike() {
+      this.likes += 1;
     },
   },
 
