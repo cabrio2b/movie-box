@@ -155,11 +155,8 @@ table {
   color: #2c3e50;
   margin-top: 10px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD ======= a {
-=======
+
 a {
->>>>>>> e4d37e0d231b22f3775ce91116235a481497e13b
   color: #808080;
   text-decoration: none;
 }
@@ -174,11 +171,8 @@ button {
 hr {
   margin: 25px 0;
 }
-<<<<<<< HEAD
->>>>>>>49db9fda4954e2b1723895e36764f3908028b09 .flex {
-=======
+
 .flex {
->>>>>>> e4d37e0d231b22f3775ce91116235a481497e13b
   display: flex;
 }
 </style>
