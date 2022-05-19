@@ -36,7 +36,7 @@ export default {
         }), */
       };
       const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/moviebox/user",
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts",
         options
       );
       const data = await response.json();

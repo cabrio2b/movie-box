@@ -4,6 +4,7 @@ import TestView from "../views/TestView.vue";
 import FilActu from "@/views/FilActu.vue";
 //import PageProfilView from "@/views/PageProfilView.vue";
 //import FicheFilmView from "../views/FicheFilmView.vue";
+import TestCreationUserView from "@/views/TestCreationUserView.vue";
 
 const routes = [
   {
@@ -22,6 +23,12 @@ const routes = [
     path: "/FilActu",
     name: "filActuFilms",
     component: FilActu,
+  },
+
+  {
+    path: "/test-crea-user",
+    name: "TestCreaUser",
+    component: TestCreationUserView,
   },
 
   /* {
