@@ -7,9 +7,24 @@
       <div class="inputContainer">
         <img src="@/assets/logoMbRondTexte.webp" alt="" />
         <form @submit.prevent="submitConnexion">
-          <input type="text" name="lastname" placeholder="Votre nom" required/>
-          <input type="text" name="firstname" placeholder="Votre prénom" required/>
-          <input type="mail" name="email" placeholder="Votre eMail" required/>
+          <input
+            type="text"
+            v-model="lastname"
+            placeholder="Votre nom"
+            required
+          />
+          <input
+            type="text"
+            v-model="firstname"
+            placeholder="Votre prénom"
+            required
+          />
+          <input
+            type="mail"
+            v-model="email"
+            placeholder="Votre eMail"
+            required
+          />
           <label for="mdp" placeholder="Votre email">Votre mot de passe</label>
           <input
             type="password"
@@ -22,13 +37,29 @@
             majuscule et un chiffre
           </p>
           <div v-show="isPasswordValid">
-          <input type="password" id="verifMdpUtilisateur" v-model="verifMpdUtilisateur" placeholder="Mot de passe">
-              <p class="indications">
-                <span class="verifNo" v-show="!verifMpdUtilisateurValid">Mots de passe sont différents</span>
-                <span class="verifOk" v-show="verifMpdUtilisateurValid">Mots de passe sont indentiques</span><br>
-              </p></div>
+            <input
+              type="password"
+              id="verifMdpUtilisateur"
+              v-model="verifMpdUtilisateur"
+              placeholder="Mot de passe"
+            />
+            <p class="indications">
+              <span class="verifNo" v-show="!verifMpdUtilisateurValid"
+                >Mots de passe sont différents</span
+              >
+              <span class="verifOk" v-show="verifMpdUtilisateurValid"
+                >Mots de passe sont indentiques</span
+              ><br />
+            </p>
+          </div>
           <hr v-show="isPasswordValid" />
-          <button class="btnCreate" v-show="isPasswordValid">s'abonner</button>
+          <button
+            @click="createUtilisateur"
+            class="btnCreate"
+            v-show="isPasswordValid"
+          >
+            s'abonner
+          </button>
         </form>
       </div>
       <div class="decoRight"></div>
@@ -39,14 +70,16 @@
 <script>
 export default {
   data() {
-    return { 
+    return {
       mpdUtilisateur: "",
-      verifMpdUtilisateur:"",
-      };
+      verifMpdUtilisateur: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+    };
   },
 
   computed: {
-
     isPasswordValid() {
       const regex = new RegExp(/(?=.*\d)(?=.*[A-Z]).{8,}/);
       return regex.test(this.mpdUtilisateur);
@@ -55,17 +88,39 @@ export default {
       return this.verifMpdUtilisateur === this.mpdUtilisateur;
     },
   },
+  methods: {
+    async createUtilisateur() {
+      console.log(this.email, this.verifMpdUtilisateur, this.firstname, this.lastname);
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.verifMpdUtilisateur,
+          firstname: this.firstname,
+          lastname: this.lastname,
+        }),
+      };
+      console.log(this.email, this.verifMpdUtilisateur, this.firstname, this.lastname);
+      const response = await fetch("https://social-network-api.osc-fr1.scalingo.io/moviebox/register",options);
+      const data = await response.json();
+      // console.log(response);
+      
+    },
+  },
 };
 </script>
 
 <style scoped>
 .verifNo {
-    background: #d8d8d8;
-    border: 2px solid red;
+  background: #d8d8d8;
+  border: 2px solid red;
 }
 .verifOk {
-    background: #a9fa71;
-    border: 1px solid #279200;
+  background: #a9fa71;
+  border: 1px solid #279200;
 }
 .inputConnectContainer {
   width: 320px;
