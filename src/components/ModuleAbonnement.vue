@@ -2,20 +2,34 @@
   <div class="inputConnectContainer">
     <div class="connectModul flex">
       <div class="decoLeft">
-        <h4>connexion</h4>
+        <h4>abonnement</h4>
       </div>
       <div class="inputContainer">
         <img src="@/assets/logoMbRondTexte.webp" alt="" />
         <form @submit.prevent="submitConnexion">
-          <label for="eMail">Votre identifiant</label>
-          <input type="mail" name="eMail" placeholder="Votre email" />
+          <input type="text" name="lastname" placeholder="Votre nom" required/>
+          <input type="text" name="firstname" placeholder="Votre prénom" required/>
+          <input type="mail" name="email" placeholder="Votre eMail" required/>
           <label for="mdp" placeholder="Votre email">Votre mot de passe</label>
-          <input type="password" name="mdp" />
-          <button class="btnConnect" type="submit">Connexion</button>
+          <input
+            type="password"
+            :class="isPasswordValid ? 'valid' : 'error'"
+            id="password"
+            v-model="mpdUtilisateur"
+          />
+          <p v-show="!isPasswordValid">
+            Un mot de passe doit faire au moins 8 caractères dont une lettre
+            majuscule et un chiffre
+          </p>
+          <div v-show="isPasswordValid">
+          <input type="password" id="verifMdpUtilisateur" v-model="verifMpdUtilisateur" placeholder="Mot de passe">
+              <p class="indications">
+                <span class="verifNo" v-show="!verifMpdUtilisateurValid">Mots de passe sont différents</span>
+                <span class="verifOk" v-show="verifMpdUtilisateurValid">Mots de passe sont indentiques</span><br>
+              </p></div>
+          <hr v-show="isPasswordValid" />
+          <button class="btnCreate" v-show="isPasswordValid">s'abonner</button>
         </form>
-        <a href="#"><p>mot de passe oublié</p></a>
-        <hr />
-        <button class="btnCreate" type="">s'abonner</button>
       </div>
       <div class="decoRight"></div>
     </div>
@@ -23,11 +37,40 @@
 </template>
 
 <script>
-export default {}
- 
+export default {
+  data() {
+    return { 
+      mpdUtilisateur: "",
+      verifMpdUtilisateur:"",
+      };
+  },
+
+  computed: {
+    // isUsernameValid() {
+    //   const length = this.username.length;
+    //   return length >= 8 && length <= 16;
+    // },
+
+    isPasswordValid() {
+      const regex = new RegExp(/(?=.*\d)(?=.*[A-Z]).{8,}/);
+      return regex.test(this.mpdUtilisateur);
+    },
+    verifMpdUtilisateurValid() {
+      return this.verifMpdUtilisateur === this.mpdUtilisateur;
+    },
+  },
+};
 </script>
 
 <style scoped>
+.verifNo {
+    background: #d8d8d8;
+    border: 2px solid red;
+}
+.verifOk {
+    background: #a9fa71;
+    border: 1px solid #279200;
+}
 .inputConnectContainer {
   width: 320px;
   justify-content: space-between;
@@ -65,6 +108,9 @@ input {
   border-radius: 5px;
   padding: 5px 15px;
 }
+input .valid {
+  border: 1px solid green;
+}
 form {
   margin: 50px 0 5px 0;
 }
@@ -72,7 +118,7 @@ form {
 .btnConnect {
   color: white;
   background-color: #d30303;
-  margin-top:20px;
+  margin-top: 20px;
   margin-bottom: 12px;
 }
 .btnCreate {
@@ -80,7 +126,9 @@ form {
   background-color: #808080;
 }
 
-a {
+p {
+  margin: -10px 10px 15px 10px;
   font-size: 12px;
+  text-align: justify;
 }
 </style>
