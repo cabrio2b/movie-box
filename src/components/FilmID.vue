@@ -11,7 +11,7 @@
     <p class="classFilmActeur">
       <a href="">{{ filmActeur }}</a>
     </p>
-    <!-- ^ ICI, UTILISER UN "v-for" AFIN D'AFFICHER LES n ACTEURS PRINCIPAUX, n À CHOISIR -->
+    <!-- ^ ICI, UTILISER UN "v-for" AFIN D'AFFICHER LES n ACTEURS PRINCIPAUX, n À CHOISIR PAR NOUS -->
     <p class="classFilmOrigine">
       <a href="">{{ filmOrigine }}</a>
     </p>
@@ -24,13 +24,13 @@
 <script>
 export default {
   props: {
+    idUniqueFilm: String, // IDENTIFIANT UNIQUE DU FILM (affiché ou non sur la fiche)
     filmTitle: String,
     filmImage: String,
     filmReal: String,
     filmActeur: String,
     filmOrigine: String,
     filmGenre: String,
-    idUniqueFilm: String, // IDENTIFIANT UNIQUE DU FILM (affiché ou non sur la fiche)
   },
 };
 </script>
