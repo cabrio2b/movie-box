@@ -46,10 +46,6 @@ export default {
   },
 
   computed: {
-    // isUsernameValid() {
-    //   const length = this.username.length;
-    //   return length >= 8 && length <= 16;
-    // },
 
     isPasswordValid() {
       const regex = new RegExp(/(?=.*\d)(?=.*[A-Z]).{8,}/);
