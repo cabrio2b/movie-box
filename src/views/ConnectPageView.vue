@@ -4,26 +4,42 @@
       <img src="@/assets/logoMb.webp" alt="Logo MovieBox" />
     </div>
     <div v-if="!getVueModule" class="inputConnectContainer">
-    <div class="connectModul flex">
-      <div class="decoLeft">
-        <h4>connexion</h4>
+      <div class="connectModul flex">
+        <div class="decoLeft">
+          <h4>connexion</h4>
+        </div>
+        <div class="inputContainer">
+          <img src="@/assets/logoMbRondTexte.webp" alt="" />
+          <form @submit.prevent="submitConnexion">
+            <input
+              type="mail"
+              name="eMail"
+              v-model="email"
+              placeholder="Votre email"
+            />
+            <label for="mdp" placeholder="Votre email"
+              >Votre mot de passe</label
+            >
+            <input type="password" name="mdp" v-model="password" />
+            <button class="btnConnect" type="submit">Connexion</button>
+          </form>
+          <a href="#"><p>mot de passe oublié</p></a>
+          <hr />
+          <button @click="btnAbonnement" class="btnCreate" type="">
+            s'abonner
+          </button>
+        </div>
+        <p v-if="result === true" class="success">
+          Connexion réussie
+          <br />
+          Token: {{ token }}
+        </p>
+        <p v-else-if="result === false" class="error">Connexion échouée</p>
+
+        <div class="decoRight"></div>
       </div>
-      <div class="inputContainer">
-        <img src="@/assets/logoMbRondTexte.webp" alt="" />
-        <form @submit.prevent="submitConnexion">
-          <input type="mail" name="eMail" placeholder="Votre email" />
-          <label for="mdp" placeholder="Votre email">Votre mot de passe</label>
-          <input type="password" name="mdp" />
-          <button class="btnConnect" type="submit">Connexion</button>
-        </form>
-        <a href="#"><p>mot de passe oublié</p></a>
-        <hr />
-        <button @click="btnAbonnement" class="btnCreate" type="">s'abonner</button>
-      </div>
-      <div class="decoRight"></div>
     </div>
-  </div>
-      <ModuleAbonnement v-if="getVueModule"></ModuleAbonnement>
+    <ModuleAbonnement v-if="getVueModule"></ModuleAbonnement>
   </div>
 </template>
 
@@ -32,23 +48,51 @@ import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 export default {
   data() {
     return {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
       getVueModule: false,
+      result: null,
+      token: "",
     };
   },
   methods: {
     // Methode de connexion utilisateur
-    submitConnexion() {
-      alert("entrer methode submitConnexion");
+    async submitConnexion() {
+      console.log("Entrée dans method async submitConnexion");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.email,
+          password: this.password,
+        }),
+      };
+
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/login",
+        options
+      );
+
+      const data = await response.json();
+
+      this.result = data.success;
+      if (data.success === true) {
+        this.token = data.token;
+      }
+      console.log();
     },
     // Methode de basculement sur création utilisateur
     btnAbonnement() {
       this.getVueModule = true;
     },
-    
   },
   components: {
-      ModuleAbonnement,
-    },
+    ModuleAbonnement,
+  },
 };
 </script>
 

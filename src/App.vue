@@ -6,10 +6,10 @@
     <!-- <router-link to="/PageProfilView">Page Profil</router-link> -->
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <router-link to="/test-crea-user">| Test Crea User |</router-link>
+    <router-link to="/recup">| Test Récup Données |</router-link>
   </nav>
   <router-view />
 </template>
-
 <style>
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126

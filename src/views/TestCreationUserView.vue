@@ -1,9 +1,9 @@
 <template>
   <section id="viewTest">
-    <input type="text" v-model="firstname" />
-    <input type="text" v-model="lastname" />
-    <input type="text" v-model="email" />
-    <input type="text" v-model="password" />
+    <input type="text" v-model="firstname" placeholder="Prénom" />
+    <input type="text" v-model="lastname" placeholder="Nom" />
+    <input type="text" v-model="email" placeholder="e-mail" />
+    <input type="text" v-model="password" placeholder="mot de passe" />
 
     <button @click="testUserCreation">Tester API</button>
   </section>
@@ -13,10 +13,10 @@
 export default {
   data() {
     return {
-      firstname: "testNom",
-      lastname: "testPrenom",
-      email: "testEmail",
-      password: "testPassword",
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
       result: null,
       token: true,
     };
