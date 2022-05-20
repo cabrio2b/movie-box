@@ -38,7 +38,7 @@
           </p>
           <div v-show="isPasswordValid">
             <input
-              type="text"
+              type="password"
               id="verifMdpUtilisateur"
               v-model="verifMpdUtilisateur"
               placeholder="Mot de passe"
@@ -127,6 +127,7 @@ export default {
   justify-content: space-between;
 }
 .inputContainer {
+  text-align: center;
   padding: 0 2rem;
   margin: -93px 0 0 0;
   flex-grow: 2;
