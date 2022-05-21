@@ -1,12 +1,11 @@
 <template>
-  <!-- Contenaire d'un film -->
   <div class="containerFilm">
     <div class="imageFilm">
       <h2>{{ filmTitle }}</h2>
     </div>
     <div class="containerCritique bgCouleurPrincipale">
       <div class="containerNotation">
-        <p class="notation textCouleurPrincipale">{{likes}} j'aime</p>
+        <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
         <p class="note">{{ firstname }} {{ lastname }}</p>
       </div>
       <p class="critique">
@@ -14,7 +13,6 @@
       </p>
     </div>
   </div>
-  <!--/ Contenaire d'un film -->
 </template>
 
 <script>
@@ -43,7 +41,6 @@ export default {
   border-left: 10px solid #d30303;
   height: 100%;
 }
-
 .containerFilm:hover {
   border-left: 10px solid #808080;
 }

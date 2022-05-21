@@ -2,10 +2,10 @@
   <!-- Contenaire Header -->
   <ModuleHeader />
   <section id="body">
-    <!-- Contenaire generale des films -->
-    <div class="containerFilms">
-      <!-- Contenaire d'un film -->
-      <ModuleFicheFilm
+    <!-- Contenaire Module des minis-fiches de film -->
+    <div class="containerFilms flex">
+      <!-- Module des minis-fiches de film -->
+      <ModuleMiniFicheFilm
         v-for="element in filActuFilmData"
         :key="element._id"
         :filmTitle="element.title"
@@ -14,10 +14,7 @@
         :lastname="element.lastname"
         :likes="element.likes.length"
       />
-      <!--<button @click="getFilActu">click me</button> -->
-      <!--/ Contenaire d'un film -->
     </div>
-    <!--/ Contenaire generale des films -->
   </section>
   <!-- Contenaire Footer -->
   <ModuleFooter />
@@ -26,7 +23,7 @@
 <script>
 //getFilActu();
 import ModuleHeader from "@/components/ModuleHeader.vue";
-import ModuleFicheFilm from "@/components/ModuleFicheFilm.vue";
+import ModuleMiniFicheFilm from "@/components/ModuleMiniFicheFilm.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
 
 export default {
@@ -34,7 +31,7 @@ export default {
     this.getFilActu();
   },
   components: {
-    ModuleFicheFilm,
+    ModuleMiniFicheFilm,
     ModuleHeader,
     ModuleFooter,
   },
@@ -56,7 +53,7 @@ export default {
         },
       };
       const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts?limit=4",
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts?limit=5",
         options
       );
       const data = await response.json();
@@ -73,7 +70,9 @@ export default {
   margin: 0 3%;
 }
 .containerFilms {
-  display: flex;
   gap: 25px;
+  flex-direction: initial;
+  justify-content: center;
 }
+
 </style>

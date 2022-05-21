@@ -61,6 +61,7 @@ export default {
       token: undefined,
     };
   },
+
   methods: {
     // Methode de connexion utilisateur
     async submitConnexion() {
@@ -94,6 +95,8 @@ export default {
       this.getVueModule = true;
     },
   },
+
+  // Enregistrement des componenets (modules)
   components: {
     ModuleAbonnement,
     DisplayUserData,

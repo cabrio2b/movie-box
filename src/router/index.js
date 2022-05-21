@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ConnectPageView from "@/views/ConnectPageView.vue";
+import PageConnectView from "@/views/PageConnectView.vue";
 import TestView from "../views/TestView.vue";
-import FilActu from "@/views/FilActu.vue";
+//import FilActu from "@/views/FilActu.vue";
 //import PageProfilView from "@/views/PageProfilView.vue";
 //import FicheFilmView from "../views/FicheFilmView.vue";
-import TestCreationUserView from "@/views/TestCreationUserView.vue";
-import ListeFilmsPageView from "@/views/ListeFilmsPageView.vue";
+//import TestCreationUserView from "@/views/TestCreationUserView.vue";
+import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
 //import RecupDonneesView from "@/views/RecupDonneesView.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: ConnectPageView,
+    component: PageConnectView,
   },
 
   {
@@ -21,22 +21,22 @@ const routes = [
     component: TestView,
   },
 
-  {
+  /*{
     path: "/FilActu",
     name: "filActuFilms",
     component: FilActu,
-  },
+  },*/
 
-  {
+  /*{
     path: "/test-crea-user",
     name: "TestCreaUser",
     component: TestCreationUserView,
-  },
+  },*/
 
   {
     path: "/liste-films",
     name: "ListeFilms",
-    component: ListeFilmsPageView,
+    component: PageListeFilmsView,
   },
 
   /*   {
