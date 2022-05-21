@@ -10,24 +10,22 @@
 
     	/!\ LES "posts" SONT LES FILMS /!\  
     	- les messages des utilisateurs sont les "comments"  
-        posts est un tableau.  
+        - "posts" est un tableau.  
 
 pour accéder aux propriétés d'un post spécifique, situé à l'indice "index" du tableau des posts :
->
-ID du Post posts[index].\_id  
-Contenu du Post posts[index].content  
-Like du Post posts[index].likes - est un tableau  
-Titre du Post posts[index].title  
-ID de l'auteur posts[index].userId  
-Prénom de l'auteur posts[index].firstname  
-Nom de l'auteur posts[index].lastname  
-Date du Post posts[index].date  
-Commentaire posts[index].comments - est un tableau  
 
+> posts[index].\_id > ID du Post  
+> posts[index].content > Contenu du Post  
+> posts[index].likes > Like du Post - est un tableau  
+> posts[index].title > Titre du Post  
+> posts[index].userId > ID de l'auteur  
+> posts[index].firstname > Prénom de l'auteur  
+> posts[index].lastname > Nom de l'auteur  
+> posts[index].date > Date du Post  
+> posts[index].comments > Commentaire - est un tableau  
 
 les commentaires seront accessibles sous la forme d'éléments du tableau "comments", soit :	
->posts[index].comments[n]>
-    pour le n-ième commentaire.
+> posts[index].comments[n] > pour le n-ième commentaire.
 
 ## Project setup
 ```
