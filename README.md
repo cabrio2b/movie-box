@@ -8,9 +8,9 @@
 
 **_ FETCH sur tous les POSTS _**
 
-    	/!\ LES "posts" SONT LES FILMS /!\  
-    	- les messages des utilisateurs sont les "comments"  
-        - "posts" est un tableau.  
+*** /!\ LES "posts" SONT LES FILMS /!\  
+- les messages des utilisateurs sont les "comments"  
+- "posts" est un tableau.  
 
 pour accéder aux propriétés d'un post spécifique, situé à l'indice "index" du tableau des posts :
 
