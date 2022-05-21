@@ -1,19 +1,19 @@
 # atelier MovieBox
 
-**_ Essai API themoviedb _**
+## Essai API themoviedb
 
 - API cinéma utilisée : https://www.themoviedb.org/
 - clé API : https://api.themoviedb.org/3/movie/550?api_key=a670fe06041314e9cdef071de7762ef3
 - Documentation : https://developers.themoviedb.org/3/movies/get-movie-details
 
-**_ FETCH sur tous les POSTS _**
+## FETCH sur tous les POSTS
 
-*** /!\ LES "posts" SONT LES FILMS /!\  
+### /!\ LES "posts" SONT LES FILMS /!\
+
 - les messages des utilisateurs sont les "comments"  
 - "posts" est un tableau.  
 
 pour accéder aux propriétés d'un post spécifique, situé à l'indice "index" du tableau des posts :
-
 > posts[index].\_id > ID du Post  
 > posts[index].content > Contenu du Post  
 > posts[index].likes > Like du Post - est un tableau  
