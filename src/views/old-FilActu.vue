@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import FilActuFilmCard from "@/components/FilActuFilmCard.vue";
+//import FilActuFilmCard from "@/components/FilActuFilmCard.vue";
 
 export default {
 

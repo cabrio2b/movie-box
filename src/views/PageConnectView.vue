@@ -45,6 +45,7 @@
 
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
+
 export default {
   data() {
     return {
@@ -57,6 +58,7 @@ export default {
       token: "",
     };
   },
+
   methods: {
     // Methode de connexion utilisateur
     async submitConnexion() {
@@ -90,6 +92,8 @@ export default {
       this.getVueModule = true;
     },
   },
+
+  // Enregistrement des componenets (modules)
   components: {
     ModuleAbonnement,
   },
