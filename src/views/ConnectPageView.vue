@@ -29,13 +29,16 @@
             s'abonner
           </button>
         </div>
-        <p v-if="result === true" class="success">
-          Connexion réussie
-          <br />
-          Token: {{ token }}
-        </p>
-        <p v-else-if="result === false" class="error">Connexion échouée</p>
-
+        <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
+        <div id="divTestConnectAndDisplayUserData">
+          <p v-if="result === true" class="success">
+            Connexion réussie
+            <br />
+            Token: {{ token }}
+          </p>
+          <p v-else-if="result === false" class="error">Connexion échouée</p>
+          <DisplayUserData v-if="token != undefined" :token="this.token" />
+        </div>
         <div class="decoRight"></div>
       </div>
     </div>
@@ -45,6 +48,7 @@
 
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
+import DisplayUserData from "@/components/DisplayUserData.vue";
 export default {
   data() {
     return {
@@ -54,7 +58,7 @@ export default {
       password: "",
       getVueModule: false,
       result: null,
-      token: "",
+      token: undefined,
     };
   },
   methods: {
@@ -92,6 +96,7 @@ export default {
   },
   components: {
     ModuleAbonnement,
+    DisplayUserData,
   },
 };
 </script>

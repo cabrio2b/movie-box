@@ -7,12 +7,11 @@
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <router-link to="/test-crea-user">| Test Crea User |</router-link>
     <router-link to="/liste-films">| Liste des films |</router-link>
-    <router-link to="/recup">| Test Récup Données |</router-link>
+    <!-- <router-link to="/recup">| Test Récup Données |</router-link> -->
   </nav>
   <router-view />
 </template>
 <style>
-
 #app {
   font-family: "Goudy Bookletter 1911", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,7 +21,7 @@
 }
 
 header {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 }
 a {
   color: #808080;
@@ -46,9 +45,9 @@ hr {
 
 /* coloristaion */
 .textCouleurPrincipale {
-    color: #d30303;
+  color: #d30303;
 }
 .bgCouleurPrincipale {
-    background-color: #00000015;
+  background-color: #00000015;
 }
 </style>
