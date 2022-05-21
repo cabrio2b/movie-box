@@ -37,10 +37,7 @@
             Token: {{ token }}
           </p>
           <p v-else-if="result === false" class="error">Connexion échouée</p>
-          <ModuleDisplayUserData
-            v-if="token != undefined"
-            :token="this.token"
-          />
+          <DisplayUserData v-if="token != undefined" :token="this.token" />
         </div>
         <div class="decoRight"></div>
       </div>
@@ -51,7 +48,7 @@
 
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
-import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
+import DisplayUserData from "@/components/ModuleDisplayUserData.vue";
 export default {
   data() {
     return {
@@ -64,7 +61,6 @@ export default {
       token: undefined,
     };
   },
-
   methods: {
     // Methode de connexion utilisateur
     async submitConnexion() {
@@ -98,11 +94,9 @@ export default {
       this.getVueModule = true;
     },
   },
-
-  // Enregistrement des componenets (modules)
   components: {
     ModuleAbonnement,
-    ModuleDisplayUserData,
+    DisplayUserData,
   },
 };
 </script>
