@@ -21,31 +21,29 @@
               >Votre mot de passe</label
             >
             <input type="password" name="mdp" v-model="password" />
-            <button class="btnConnect" type="submit">Connexion</button>
+            <button class="btnRouge" type="submit">Connexion</button>
           </form>
           <a href="#"><p>mot de passe oublié</p></a>
           <hr />
-          <button @click="btnAbonnement" class="btnCreate" type="">
+          <button @click="btnAbonnement" class="btnGris" type="">
             s'abonner
           </button>
         </div>
-        <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
-        <div id="divTestConnectAndDisplayUserData">
-          <p v-if="result === true" class="success">
-            Connexion réussie
-            <br />
-            Token: {{ token }}
-          </p>
-          <p v-else-if="result === false" class="error">Connexion échouée</p>
-          <ModuleDisplayUserData
-            v-if="token != undefined"
-            :token="this.token"
-          />
-        </div>
+
         <div class="decoRight"></div>
       </div>
     </div>
     <ModuleAbonnement v-if="getVueModule"></ModuleAbonnement>
+  </div>
+  <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
+  <div id="divTestConnectAndDisplayUserData">
+    <p v-if="result === true" class="success">
+      Connexion réussie
+      <br />
+      Token: {{ token }}
+    </p>
+    <p v-else-if="result === false" class="error">Connexion échouée</p>
+    <ModuleDisplayUserData v-if="token != undefined" :token="this.token" />
   </div>
 </template>
 
@@ -160,19 +158,11 @@ input {
 form {
   margin: 50px 0 5px 0;
 }
-
-.btnConnect {
-  color: white;
-  background-color: #d30303;
-  margin-top: 20px;
-  margin-bottom: 12px;
-}
-.btnCreate {
-  color: #e5e5e5;
-  background-color: #808080;
-}
-
 a {
   font-size: 12px;
+}
+.btnRouge {
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 </style>

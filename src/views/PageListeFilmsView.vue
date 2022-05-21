@@ -2,6 +2,9 @@
   <!-- Contenaire Header -->
   <ModuleHeader />
   <section id="body">
+    <!-- Contenaire Module du Bandeau des utilisateur -->
+    <ModuleBandeauUtilisateurs />
+
     <!-- Contenaire Module des minis-fiches de film -->
     <div class="containerFilms flex">
       <!-- Module des minis-fiches de film -->
@@ -23,6 +26,7 @@
 <script>
 //getFilActu();
 import ModuleHeader from "@/components/ModuleHeader.vue";
+import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
 import ModuleMiniFicheFilm from "@/components/ModuleMiniFicheFilm.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
 
@@ -32,6 +36,7 @@ export default {
   },
   components: {
     ModuleMiniFicheFilm,
+    ModuleBandeauUtilisateurs,
     ModuleHeader,
     ModuleFooter,
   },

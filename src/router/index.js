@@ -10,8 +10,8 @@ import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
 
 const routes = [
   {
-    path: "/",
-    name: "home",
+    path: "/connect",
+    name: "connexion",
     component: PageConnectView,
   },
 
@@ -34,8 +34,8 @@ const routes = [
   },*/
 
   {
-    path: "/liste-films",
-    name: "ListeFilms",
+    path: "/",
+    name: "accueil",
     component: PageListeFilmsView,
   },
 

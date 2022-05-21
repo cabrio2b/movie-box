@@ -53,7 +53,7 @@
             </p>
           </div>
           <hr v-show="isPasswordValid" />
-          <button class="btnCreate" v-show="isPasswordValid">S'abonner</button>
+          <button class="btnRouge" v-show="isPasswordValid">S'abonner</button>
         </form>
       </div>
       <div class="decoRight"></div>

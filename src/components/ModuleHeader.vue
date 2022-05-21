@@ -15,7 +15,7 @@ export default {
 
 <style scoped>
 header {
-    margin-bottom: 4%;
+    margin-bottom: 3%;
 }
 .containerHeader {
     text-align: center;
