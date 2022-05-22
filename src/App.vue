@@ -37,6 +37,12 @@ button {
 hr {
   margin: 25px 0;
 }
+input {
+  background-color: gainsboro;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
 
 .flex {
   display: flex;
