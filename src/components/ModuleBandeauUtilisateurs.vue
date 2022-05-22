@@ -1,11 +1,24 @@
 <template>
+<p>si non connecter :</p>
   <div id="bandeauUtilisateursContainer">
     <div class="decoPellicule"></div>
     <div class="bandeauUtilisateurs flex">
       <div></div>
       <div class="btnsConnexion flex">
         <button @click="$router.push({ path: '/connect' })" class="btnRouge">connexion</button>
-        <button @click="$router.push({ path: '/connect', methods: 'btnAbonnement' })" class="btnGris">abonnement</button>
+        <button @click="$router.push({ path: '/connect', methods: 'btnAbonnement()' })" class="btnGris">abonnement</button>
+      </div>
+    </div>
+    <div class="decoPellicule"></div>
+  </div>
+  <p>si connecter :</p>
+  <div id="bandeauUtilisateursContainer">
+    <div class="decoPellicule"></div>
+    <div class="bandeauUtilisateurs flex">
+      <div></div>
+      <div class="btnsConnexion flex">
+        <button @click="$router.push({ path: '/connect' })" class="btnRouge">connexion</button>
+        <button @click="$router.push({ path: '/connect', methods: 'btnAbonnement()' })" class="btnGris">abonnement</button>
       </div>
     </div>
     <div class="decoPellicule"></div>
