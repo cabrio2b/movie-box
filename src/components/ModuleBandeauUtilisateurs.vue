@@ -5,13 +5,14 @@
     <div class="bandeauUtilisateurs flex">
       <div></div>
       <div class="btnsConnexion flex">
-        <button @click="$router.push({ path: '/connect' })" class="btnRouge">
+        <button
+          @click="$router.push({ path: '/connect' })"
+          class="btnRouge"
+        >
           connexion
         </button>
         <button
-          @click="
-            $router.push({ path: '/connect', methods: 'btnAbonnement()' })
-          "
+          @click="$router.push({ path: '/connect' })"
           class="btnGris"
         >
           abonnement
