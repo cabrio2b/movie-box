@@ -1,11 +1,11 @@
 <template>
   <section id="recupDonneesTest">
     <button id="boutonDuToken" @click="affichToken">
-      Test : Afficher le Token de l'utilisateur connecté
+      TEST : Afficher le Token de l'utilisateur connecté
     </button>
     <br />
     <button id="leBoutonKiVaBien" @click="testRecupDonnees">
-      Test : Récupérer les infos de l'utilisateur connecté.
+      TEST : Récupérer les infos de l'utilisateur connecté.
     </button>
   </section>
 </template>

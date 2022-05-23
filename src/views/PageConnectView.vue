@@ -29,27 +29,35 @@
             s'abonner
           </button>
         </div>
+        <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
+        <div id="divTestConnectAndDisplayUserData">
+          <p v-if="result === true" class="success">
+            Connexion réussie
+            <br />
+            Token: {{ token }}
+          </p>
+          <p v-else-if="result === false" class="error">Connexion échouée</p>
+          <ModuleDisplayUserData
+            v-if="token != undefined"
+            :token="this.token"
+          />
+          <ModuleLocalStorageToken
+            v-if="token != undefined"
+            :token="this.token"
+          />
+        </div>
 
         <div class="decoRight"></div>
       </div>
     </div>
     <ModuleAbonnement v-if="getVueModule"></ModuleAbonnement>
   </div>
-  <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
-  <div id="divTestConnectAndDisplayUserData">
-    <p v-if="result === true" class="success">
-      Connexion réussie
-      <br />
-      Token: {{ token }}
-    </p>
-    <p v-else-if="result === false" class="error">Connexion échouée</p>
-    <ModuleDisplayUserData v-if="token != undefined" :token="this.token" />
-  </div>
 </template>
 
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
+import ModuleLocalStorageToken from "@/components/ModuleLocalStorageToken.vue";
 export default {
   data() {
     return {
@@ -97,10 +105,11 @@ export default {
     },
   },
 
-  // Enregistrement des componenets (modules)
+  // Enregistrement des components (modules)
   components: {
     ModuleAbonnement,
     ModuleDisplayUserData,
+    ModuleLocalStorageToken,
   },
 };
 </script>
