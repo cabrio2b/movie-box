@@ -11,6 +11,10 @@
           <p>{{likes}}</p>
           <p>{{firstname}} {{lastname}}</p>
           <p>{{post}}</p>
+          <div class="commentary">
+         <textarea id="comment" rows="2" cols="30"  >Votre commentaire...</textarea>
+          <button type="submit" class="btnComment">Commenter</button>
+          </div>
         </div>
     </section>
       <!-- Contenaire Footer -->
@@ -34,6 +38,8 @@ export default {
         firstname: String, 
         lastname: String, 
         post: String,
+        postId: String,
+        content: String,
     },
 
   components: {
@@ -43,7 +49,36 @@ export default {
       ModuleFooter,
   },
 
+  data() {
+    return {
+      postId: String,
+      content: String,
+      comment:"",
+    };
+  },
 
+  methods: {
+    async postComment() {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer ${this.token}",
+        },
+        body: JSON.stringify({
+            postId: this.postId,
+            content: this.content,
+            comment: this.comment,
+        }) 
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts/comment",
+        options
+      );
+      const data = await response.json();
+     
+    },
+  },
 };
 </script>
 
