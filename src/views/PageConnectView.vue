@@ -21,7 +21,13 @@
               >Votre mot de passe</label
             >
             <input type="password" name="mdp" v-model="password" />
-            <button class="btnRouge" type="submit">Connexion</button>
+            <button
+              @click="$router.push({ path: '/' })"
+              class="btnRouge"
+              type="submit"
+            >
+              Connexion
+            </button>
           </form>
           <a href="#"><p>mot de passe oublié</p></a>
           <hr />
