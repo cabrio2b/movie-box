@@ -7,6 +7,7 @@ import TestView from "../views/TestView.vue";
 //import TestCreationUserView from "@/views/TestCreationUserView.vue";
 import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
 //import RecupDonneesView from "@/views/RecupDonneesView.vue";
+import PageInfoFilmView from "@/views/PageInfoFilmView.vue";
 
 const routes = [
   {
@@ -55,6 +56,12 @@ const routes = [
     name: "FicheFilm",
     component: FicheFilmView,
   }, */
+  {
+    path: "/page-film",
+    name: "PageFilm",
+    component: PageInfoFilmView,
+    props: true,
+  },
 ];
 
 const router = createRouter({
