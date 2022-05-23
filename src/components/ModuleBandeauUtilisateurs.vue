@@ -18,15 +18,12 @@
     <div class="decoPellicule"></div>
   </div>
   <p>si connecter :</p>
-  <ModuleBandeauUtilisateursConnecter />
 </template>
 
 <script>
-import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
 export default {
   components: {
-    ModuleBandeauUtilisateursConnecter,
     ModuleDisplayUserData,
   },
 };

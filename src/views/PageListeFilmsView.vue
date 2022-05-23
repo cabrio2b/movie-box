@@ -3,7 +3,8 @@
   <ModuleHeader @dizaine-de-click="afficherAlerte" />
   <section id="body">
     <!-- Contenaire Module du Bandeau des utilisateur -->
-    <ModuleBandeauUtilisateurs />
+    <ModuleBandeauUtilisateurs v-if="!connected" />
+    <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
 
     <!-- Contenaire Module des minis-fiches de film -->
     <div class="containerFilms flex">
@@ -29,9 +30,21 @@ import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
 import ModuleMiniFicheFilm from "@/components/ModuleMiniFicheFilm.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
+import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
 
 export default {
   mounted() {
+    //Appel du token du local storage
+    this.token = localStorage.getItem("savedUserToken");
+    console.log("Affichage du token local récupéré automatiquement :");
+    console.log(this.token);
+    //test de connexion à partri de la valeur du token sauvegardé
+    if (this.token != undefined && this.token != null && this.token != "") {
+      this.connected = true;
+    }
+    console.log("Affichage du token local récupéré automatiquement :");
+    console.log(this.token);
+    // Lancement auto de la fonction d'acutalisatin du fil actu
     this.getFilActu();
   },
   components: {
@@ -39,12 +52,15 @@ export default {
     ModuleBandeauUtilisateurs,
     ModuleHeader,
     ModuleFooter,
+    ModuleBandeauUtilisateursConnecter,
   },
 
   data() {
     return {
       arrayLikesFilm: [],
       filActuFilmData: [],
+      token: "",
+      connected: undefined,
     };
   },
 
@@ -57,7 +73,6 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          //Authorization: "bearer token",
         },
       };
       const response = await fetch(
