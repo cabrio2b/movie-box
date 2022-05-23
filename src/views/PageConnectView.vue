@@ -41,10 +41,6 @@
             v-if="token != undefined"
             :token="this.token"
           />
-          <ModuleLocalStorageToken
-            v-if="token != undefined"
-            :token="this.token"
-          />
         </div>
 
         <div class="decoRight"></div>
@@ -57,15 +53,23 @@
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
-import ModuleLocalStorageToken from "@/components/ModuleLocalStorageToken.vue";
 export default {
+  props: {
+    showSubscription: String,
+  },
+
+  mounted() {
+    this.token = localStorage.getItem("savedUserToken");
+    console.log("Affichage du token local récupéré automatiquement :");
+    console.log(this.token);
+  },
   data() {
     return {
       firstname: "",
       lastname: "",
       email: "",
       password: "",
-      getVueModule: false,
+      getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
     };
@@ -97,8 +101,15 @@ export default {
       if (data.success === true) {
         this.token = data.token;
       }
-      console.log();
+      this.saveUserToken();
     },
+
+    saveUserToken() {
+      console.log("entrée dans la méthode saveUserToken, avec le token: ");
+      console.log(this.token);
+      localStorage.setItem("savedUserToken", this.token);
+    },
+
     // Methode de basculement sur création utilisateur
     btnAbonnement() {
       this.getVueModule = true;
@@ -109,7 +120,6 @@ export default {
   components: {
     ModuleAbonnement,
     ModuleDisplayUserData,
-    ModuleLocalStorageToken,
   },
 };
 </script>

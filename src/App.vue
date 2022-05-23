@@ -3,6 +3,7 @@
     <router-link to="/">| Liste des films |</router-link>
     <router-link to="/connect">| Connexion |</router-link>
     <router-link to="/test">| Test |</router-link>
+    <router-link to="/page-film">| Page Film |</router-link>
     <!-- <router-link to="/FilActu">| Fil d'Actu |</router-link>-->
     <router-link to="/PageProfilView">Page Profil</router-link>
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
