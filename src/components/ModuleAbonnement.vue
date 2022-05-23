@@ -53,7 +53,7 @@
             </p>
           </div>
           <hr v-show="isPasswordValid" />
-          <button class="btnCreate" v-show="isPasswordValid">S'abonner</button>
+          <button class="btnRouge" v-show="isPasswordValid">S'abonner</button>
         </form>
       </div>
       <div class="decoRight"></div>
@@ -155,10 +155,6 @@ input {
   margin-bottom: 15px;
   margin-top: 5px;
   height: 25px;
-  background-color: gainsboro;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 15px;
 }
 input .valid {
   border: 1px solid green;

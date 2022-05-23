@@ -1,12 +1,12 @@
 <template>
   <nav>
-    <router-link to="/">| Connect |</router-link>
+    <router-link to="/">| Liste des films |</router-link>
+    <router-link to="/connect">| Connexion |</router-link>
     <router-link to="/test">| Test |</router-link>
     <!-- <router-link to="/FilActu">| Fil d'Actu |</router-link>-->
     <!-- <router-link to="/PageProfilView">Page Profil</router-link> -->
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <!-- <router-link to="/test-crea-user">| Test Crea User |</router-link> -->
-    <router-link to="/liste-films">| Liste des films |</router-link>
     <!-- <router-link to="/recup">| Test Récup Données |</router-link> -->
   </nav>
   <router-view />
@@ -19,9 +19,8 @@
   color: #2c3e50;
   margin-top: 10px;
 }
-
-header {
-  margin-bottom: 5%;
+body {
+  margin: 0;
 }
 a {
   color: #808080;
@@ -38,6 +37,12 @@ button {
 hr {
   margin: 25px 0;
 }
+input {
+  background-color: gainsboro;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
 
 .flex {
   display: flex;
@@ -50,4 +55,19 @@ hr {
 .bgCouleurPrincipale {
   background-color: #00000015;
 }
+.btnRouge {
+  color: white;
+  background-color: #d30303;
+}
+.btnRouge:hover {
+  background-color: #920202;
+}
+.btnGris {
+  color: #e5e5e5;
+  background-color: #808080;
+}
+.btnGris:hover {
+  background-color: #aeacac;
+}
+
 </style>
