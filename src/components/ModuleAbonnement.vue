@@ -53,7 +53,13 @@
             </p>
           </div>
           <hr v-show="isPasswordValid" />
-          <button class="btnRouge" v-show="isPasswordValid">S'abonner</button>
+          <button
+            @click="$router.push({ path: '/' })"
+            class="btnRouge"
+            v-show="isPasswordValid"
+          >
+            S'abonner
+          </button>
         </form>
       </div>
       <div class="decoRight"></div>
