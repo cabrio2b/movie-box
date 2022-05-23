@@ -8,7 +8,7 @@
             <div id="btninfoUtilisateur" class="btninfoUtilisateur"></div>
           </a>
 
-          <p>bonjour {utilisateur}</p>
+          <p>bonjour {{ firstname }}</p>
         </div>
         <div class="commentUtilisateur">
           <div id="btncommentUtilisateur" class="btncommentUtilisateur"></div>
@@ -28,7 +28,7 @@
         <input type="text" placeholder="recherche film" />
       </div>
       <div class="btnsConnexion flex">
-        <button class="btnRouge">déconnexion</button>
+        <button @click="disconnect" class="btnRouge">déconnexion</button>
       </div>
     </div>
     <div class="decoPellicule"></div>
@@ -36,7 +36,55 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    this.testRecupDonnees();
+  },
+  data() {
+    return {
+      firstname: "",
+      lastname: "",
+      email: "",
+      identifiant: "",
+      result: null,
+    };
+  },
+  props: {
+    token: String,
+  },
+  methods: {
+    async testRecupDonnees() {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/user",
+        options
+      );
+
+      const data = await response.json();
+      console.log("Affichage des données utilisateur connecté :");
+      console.log(data);
+
+      this.firstname = data.firstname;
+      this.lastname = data.lastname;
+      this.email = data.email;
+      this.identifiant = data._id;
+    },
+
+    follyyUltimateV() {
+      console.log(this.identifiant);
+    },
+    disconnect() {
+      localStorage.removeItem("savedUserToken");
+      
+    },
+  },
+};
 </script>
 
 <style scoped>

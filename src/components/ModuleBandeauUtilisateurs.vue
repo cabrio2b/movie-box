@@ -5,31 +5,25 @@
     <div class="bandeauUtilisateurs flex">
       <div></div>
       <div class="btnsConnexion flex">
-        <button
-          @click="$router.push({ path: '/connect' })"
-          class="btnRouge"
-        >
+        <button @click="$router.push({ path: '/connect' })" class="btnRouge">
           connexion
         </button>
         <router-link
           :to="{ name: 'connexion', params: { showSubscription: 'true' } }"
         >
-        <button class="btnGris">abonnement</button>
+          <button class="btnGris">abonnement</button>
         </router-link>
       </div>
     </div>
     <div class="decoPellicule"></div>
   </div>
   <p>si connecter :</p>
-  <ModuleBandeauUtilisateursConnecter />
 </template>
 
 <script>
-import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
 export default {
   components: {
-    ModuleBandeauUtilisateursConnecter,
     ModuleDisplayUserData,
   },
 };
