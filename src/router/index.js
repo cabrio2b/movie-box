@@ -6,7 +6,7 @@ import TestView from "../views/TestView.vue";
 //import FicheFilmView from "../views/FicheFilmView.vue";
 //import TestCreationUserView from "@/views/TestCreationUserView.vue";
 import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
-//import RecupDonneesView from "@/views/RecupDonneesView.vue";
+import PageRecupDonneesView from "@/views/PageRecupDonneesView.vue";
 
 const routes = [
   {
@@ -39,11 +39,11 @@ const routes = [
     component: PageListeFilmsView,
   },
 
-  /*   {
+  {
     path: "/recup",
-    name: "RecupDonnees",
-    componenet: RecupDonneesView,
-  }, */
+    name: "recupDonnees",
+    component: PageRecupDonneesView,
+  },
 
   /* {
     path: "/PageProfilView",

@@ -42,7 +42,7 @@
               id="verifMdpUtilisateur"
               v-model="verifMpdUtilisateur"
               placeholder="Mot de passe"
-            /><!-- ICI EN TEXTE ET NON EN PASSWORD -->
+            />
             <p class="indications">
               <span class="verifNo" v-show="!verifMpdUtilisateurValid"
                 >Mots de passe sont différents</span

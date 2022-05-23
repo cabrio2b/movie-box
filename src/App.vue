@@ -7,10 +7,20 @@
     <!-- <router-link to="/PageProfilView">Page Profil</router-link> -->
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <!-- <router-link to="/test-crea-user">| Test Crea User |</router-link> -->
-    <!-- <router-link to="/recup">| Test Récup Données |</router-link> -->
+    <router-link to="/recup">| Test Récup Données |</router-link>
   </nav>
   <router-view />
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.token = localStorage.getItem("savedUserToken");
+    console.log("Affichage du token local récupéré automatiquement :");
+    console.log(this.token);
+  },
+};
+</script>
 <style>
 #app {
   font-family: "Goudy Bookletter 1911", sans-serif;
@@ -69,5 +79,4 @@ input {
 .btnGris:hover {
   background-color: #aeacac;
 }
-
 </style>
