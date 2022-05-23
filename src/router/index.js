@@ -13,6 +13,7 @@ const routes = [
     path: "/connect",
     name: "connexion",
     component: PageConnectView,
+    props: true,
   },
 
   {

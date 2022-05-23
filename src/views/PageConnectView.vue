@@ -59,13 +59,17 @@ import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
 import ModuleLocalStorageToken from "@/components/ModuleLocalStorageToken.vue";
 export default {
+  props: {
+    showSubscription: String,
+  },
+
   data() {
     return {
       firstname: "",
       lastname: "",
       email: "",
       password: "",
-      getVueModule: false,
+      getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
     };

@@ -8,14 +8,11 @@
         <button @click="$router.push({ path: '/connect' })" class="btnRouge">
           connexion
         </button>
-        <button
-          @click="
-            $router.push({ path: '/connect', methods: 'btnAbonnement()' })
-          "
-          class="btnGris"
+        <router-link
+          :to="{ name: 'connexion', params: { showSubscription: 'true' } }"
         >
-          abonnement
-        </button>
+        <button class="btnGris">abonnement</button>
+        </router-link>
       </div>
     </div>
     <div class="decoPellicule"></div>
