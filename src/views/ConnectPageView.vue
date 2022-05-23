@@ -102,14 +102,16 @@ export default {
 </script>
 
 <style scoped>
+.logoContainer {
+  width: 320px;
+}
+
 #connectContainer {
   margin-top: 10%;
   justify-content: center;
   gap: 15%;
 }
-.logoContainer {
-  width: 320px;
-}
+
 .logoContainer img {
   width: 100%;
 }

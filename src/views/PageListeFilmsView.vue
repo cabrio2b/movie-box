@@ -1,6 +1,6 @@
 <template>
   <!-- Contenaire Header -->
-  <ModuleHeader />
+  <ModuleHeader @dizaine-de-click="afficherAlerte" />
   <section id="body">
     <!-- Contenaire Module du Bandeau des utilisateur -->
     <ModuleBandeauUtilisateurs />
@@ -49,6 +49,9 @@ export default {
   },
 
   methods: {
+    afficherAlerte() {
+      alert("YEEEAAAAAH BAAAABYYY YEEEEAAAAAH");
+    },
     async getFilActu() {
       const options = {
         method: "GET",
@@ -79,5 +82,4 @@ export default {
   flex-direction: initial;
   justify-content: center;
 }
-
 </style>

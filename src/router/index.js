@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import PageConnectView from "@/views/PageConnectView.vue";
 import TestView from "../views/TestView.vue";
 //import FilActu from "@/views/FilActu.vue";
-//import PageProfilView from "@/views/PageProfilView.vue";
+import PageProfilView from "@/views/PageProfilView.vue";
 //import FicheFilmView from "../views/FicheFilmView.vue";
 //import TestCreationUserView from "@/views/TestCreationUserView.vue";
 import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
@@ -45,11 +45,11 @@ const routes = [
     componenet: RecupDonneesView,
   }, */
 
-  /* {
-    path: "/PageProfilView",
+  {
+    path: "/Profil",
     name: "PageProfil",
     component: PageProfilView,
-  }, */
+  },
   /*   {
     path: "/fiche-film",
     name: "FicheFilm",
