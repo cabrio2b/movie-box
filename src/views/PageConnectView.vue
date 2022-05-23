@@ -41,6 +41,10 @@
             v-if="token != undefined"
             :token="this.token"
           />
+          <ModuleLocalStorageToken
+            v-if="token != undefined"
+            :token="this.token"
+          />
         </div>
         <div class="decoRight"></div>
       </div>
@@ -52,6 +56,7 @@
 <script>
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
+import ModuleLocalStorageToken from "@/components/ModuleLocalStorageToken.vue";
 export default {
   data() {
     return {
@@ -99,10 +104,11 @@ export default {
     },
   },
 
-  // Enregistrement des componenets (modules)
+  // Enregistrement des components (modules)
   components: {
     ModuleAbonnement,
     ModuleDisplayUserData,
+    ModuleLocalStorageToken,
   },
 };
 </script>
