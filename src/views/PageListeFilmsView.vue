@@ -34,15 +34,18 @@ import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilis
 
 export default {
   mounted() {
+    //Appel du token du local storage
     this.token = localStorage.getItem("savedUserToken");
     console.log("Affichage du token local récupéré automatiquement :");
     console.log(this.token);
-    this.getFilActu();
+    //test de connexion à partri de la valeur du token sauvegardé
     if (this.token != undefined && this.token != null && this.token != "") {
       this.connected = true;
     }
     console.log("Affichage du token local récupéré automatiquement :");
     console.log(this.token);
+    // Lancement auto de la fonction d'acutalisatin du fil actu
+    this.getFilActu();
   },
   components: {
     ModuleMiniFicheFilm,
