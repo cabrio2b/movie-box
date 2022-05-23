@@ -1,9 +1,9 @@
 <template>
   <header>
     <div class="containerHeader">
-      <button @click="increment">
+      <a @click="increment">
         <img class="logo" src="@/assets/logoMb.webp" />
-      </button>
+      </a>
       <h1 class="textCouleurPrincipale">Le blog de vos critiques de films</h1>
     </div>
   </header>

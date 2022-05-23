@@ -1,6 +1,6 @@
 <template>
 <router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">
-  <div class="containerFilm">
+  <div>
     <div class="imageFilm">
       <h2>{{ filmTitle }}</h2>
     </div>
