@@ -1,4 +1,6 @@
 <template>
+  <ModuleHeader />
+  <ModuleBandeauUtilisateurs />
   <section id="profil-container">
     <div id="profilArea">
       <div id="profilPhoto">
@@ -8,7 +10,6 @@
       </div>
       <br />
 
-      <ProfilInfo></ProfilInfo>
       <br />
       <div id="profilFriends">
         <input type="text" />
@@ -38,32 +39,20 @@
       </div>
     </div>
   </section>
+  <ModuleFooter />
 </template>
 
 <script>
-import ProfilInfo from "@/components/PageProfilInfo.vue";
-
-const options = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: "bearer token",
+import ModuleHeader from "@/components/ModuleHeader.vue";
+import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
+import ModuleFooter from "@/components/ModuleFooter.vue";
+export default {
+  components: {
+    ModuleHeader,
+    ModuleBandeauUtilisateurs,
+    ModuleFooter,
   },
-  body: JSON.stringify({
-    firstname: String,
-    lastname: String,
-    email: String,
-    age: Number,
-    occupation: String,
-  }),
 };
-const response = await fetch(
-  "https://social-network-api.oscfr1.scalingo.io/demo/login",
-  options
-);
-const data = await response.json();
-
-export default PageProfilView;
 </script>
 
 <style scoped>

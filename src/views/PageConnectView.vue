@@ -54,6 +54,10 @@
 import ModuleAbonnement from "@/components/ModuleAbonnement.vue";
 import ModuleDisplayUserData from "@/components/ModuleDisplayUserData.vue";
 export default {
+  props: {
+    showSubscription: String,
+  },
+
   mounted() {
     this.token = localStorage.getItem("savedUserToken");
     console.log("Affichage du token local récupéré automatiquement :");
@@ -65,7 +69,7 @@ export default {
       lastname: "",
       email: "",
       password: "",
-      getVueModule: false,
+      getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
     };
