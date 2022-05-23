@@ -12,8 +12,8 @@
           <p>{{firstname}} {{lastname}}</p>
           <p>{{post}}</p>
           <div class="commentary">
+         <textarea id="comment" rows="2" cols="30"  >Votre commentaire...</textarea>
           <button type="submit" class="btnComment">Commenter</button>
-          <input type="text" placeholder="Votre commentaires" v-model="comment"/>
           </div>
         </div>
     </section>
@@ -63,7 +63,7 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "bearer token"
+          "Authorization": "Bearer ${this.token}",
         },
         body: JSON.stringify({
             postId: this.postId,
@@ -72,7 +72,7 @@ export default {
         }) 
       };
       const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/moviebox/comment",
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts/comment",
         options
       );
       const data = await response.json();
