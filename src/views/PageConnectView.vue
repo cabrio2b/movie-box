@@ -29,7 +29,6 @@
             s'abonner
           </button>
         </div>
-<<<<<<< HEAD
         <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
         <div id="divTestConnectAndDisplayUserData">
           <p v-if="result === true" class="success">
@@ -47,23 +46,11 @@
             :token="this.token"
           />
         </div>
-=======
 
->>>>>>> bbcdaab1470374108169545f7ceac0534f502e80
         <div class="decoRight"></div>
       </div>
     </div>
     <ModuleAbonnement v-if="getVueModule"></ModuleAbonnement>
-  </div>
-  <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
-  <div id="divTestConnectAndDisplayUserData">
-    <p v-if="result === true" class="success">
-      Connexion réussie
-      <br />
-      Token: {{ token }}
-    </p>
-    <p v-else-if="result === false" class="error">Connexion échouée</p>
-    <ModuleDisplayUserData v-if="token != undefined" :token="this.token" />
   </div>
 </template>
 
