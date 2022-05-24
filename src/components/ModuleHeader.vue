@@ -4,7 +4,9 @@
       <a @click="increment">
         <img class="logo" src="@/assets/logoMb.webp" />
       </a>
-      <h1 class="textCouleurPrincipale">Le blog de vos critiques de films</h1>
+      <h1 class="textCouleurPrincipale">
+        Le premier réseau social pour les passionnés de Cinéma !
+      </h1>
     </div>
   </header>
 </template>

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-//getFilActu();
 import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
 import ModuleMiniFicheFilm from "@/components/ModuleMiniFicheFilm.vue";
