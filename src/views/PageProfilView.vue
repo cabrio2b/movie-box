@@ -1,18 +1,21 @@
 <template>
+  <ModuleHeader />
   <section>
-    <ModuleHeader />
     <ModuleBandeauUtilisateurs v-if="!connected" />
     <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
-    <button @click="getProfilInfo">Recherche</button>
-    <ModuleProfilPerso
-      v-for="element in pageProfilData"
-      :key="element._id"
-      :firstname="element.firstname"
-      :lastname="element.lastname"
-      :email="element.email"
-    />
-    <ModuleFooter />
+    <div id="ProfilPersoContainer">
+      <ModuleProfilPerso
+        v-for="element in pageProfilData"
+        :key="element._id"
+        :firstname="element.firstname"
+        :lastname="element.lastname"
+        :email="element.userId"
+        data.firstname
+      />
+      <button @click="getProfilInfo">Recherche</button>
+    </div>
   </section>
+  <ModuleFooter />
 </template>
 
 <script>
@@ -22,6 +25,22 @@ import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilis
 import ModuleFooter from "@/components/ModuleFooter.vue";
 import ModuleProfilPerso from "@/components/ModuleProfilPerso.vue";
 export default {
+  beforeMount() {
+    this.token = localStorage.getItem("savedUserToken");
+    //test de connexion à partir de la valeur du token sauvegardé
+    if (this.token != null && this.token != undefined && this.token != 0) {
+      //Appel du token du local storage
+
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+      this.connected = true;
+    } else {
+      this.token = undefined;
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+    }
+  },
+
   components: {
     ModuleHeader,
     ModuleBandeauUtilisateurs,
@@ -31,34 +50,34 @@ export default {
   },
   data() {
     return {
-      firstname: "",
-      lastname: "",
-      email: "",
       pageProfilData: [],
       connected: undefined,
     };
   },
+  props: {
+    firstname: String,
+    lastname: String,
+    email: String,
+  },
 
   methods: {
     async getProfilInfo() {
+      alert(this.token);
       const options = {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "bearer token",
-        },
-        Body: {
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjhiOTM4OTEzNjMyMzAwMWI2ZjU3NTgiLCJpYXQiOjE2NTMzODA1NzUsImV4cCI6MTY1MzQ2Njk3NX0.Zj48HV6yJZ-B16zY7Tn2wCQ5n6n2eh27bUFNsuzhhl0",
         },
       };
+
       const response = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/moviebox/user",
         options
       );
       const data = await response.json();
-      this.pageProfilData = data.user;
+      this.pageProfilData = data;
       console.log(data);
       console.log(this.pageProfilData);
     },

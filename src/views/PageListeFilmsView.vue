@@ -77,6 +77,7 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: "Bearer ${this.token}",
         },
       };
       const response = await fetch(
