@@ -9,6 +9,7 @@ import PageListeFilmsView from "@/views/PageListeFilmsView.vue";
 import PageRecupDonneesView from "@/views/PageRecupDonneesView.vue";
 import PageInfoFilmView from "@/views/PageInfoFilmView.vue";
 import PageNewFilmView from "@/views/PageNewFilmView.vue";
+import PageFilmUniqueView from "@/views/PageFilmUniqueView.vue";
 
 const routes = [
   {
@@ -62,6 +63,13 @@ const routes = [
     path: "/page-film",
     name: "PageFilm",
     component: PageInfoFilmView,
+    props: true,
+  },
+
+  {
+    path: "/le-film",
+    name: "LeFilm",
+    component: PageFilmUniqueView,
     props: true,
   },
 

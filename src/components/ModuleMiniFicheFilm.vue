@@ -1,20 +1,29 @@
 <template>
-<router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">
-  <div>
-    <div class="imageFilm">
-      <h2>{{ filmTitle }}</h2>
-    </div>
-    <div class="containerCritique bgCouleurPrincipale">
-      <div class="containerNotation">
-        <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
-        <p class="note">{{ firstname }} {{ lastname }}</p>
+  <!-- ROUTEUR VERS LA PAGE EN COURS DE TEST -->
+  <router-link
+    class="containerFilm"
+    :to="{
+      name: 'LeFilm',
+      params: { filmTitle, firstname, lastname, likes, post, postId },
+    }"
+  >
+    <!--  <router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">  -->
+
+    <div>
+      <div class="imageFilm">
+        <h2>{{ filmTitle }}</h2>
       </div>
-      <p class="critique">
-        {{ post }}
-      </p>
+      <div class="containerCritique bgCouleurPrincipale">
+        <div class="containerNotation">
+          <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
+          <p class="note">{{ firstname }} {{ lastname }}</p>
+        </div>
+        <p class="critique">
+          {{ post }}
+        </p>
+      </div>
     </div>
-  </div>
-</router-link>
+  </router-link>
 </template>
 
 <script>
@@ -26,6 +35,7 @@ export default {
     lastname: String,
     firstname: String,
     likes: Number,
+    postId: String,
   },
   data() {
     return {};

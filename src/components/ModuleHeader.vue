@@ -5,7 +5,7 @@
         <img class="logo" src="@/assets/logoMb.webp" />
       </a>
       <h1 class="textCouleurPrincipale">
-        Le premier réseau social pour les passionnés de Cinéma !
+        Le réseau social pour les passionnés de Cinéma !
       </h1>
     </div>
   </header>

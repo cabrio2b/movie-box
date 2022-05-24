@@ -25,7 +25,7 @@
         ></textarea>
         <button>BANCO !</button>
       </form>
-      <!-- EN-DESSOUS, UNE div DE TEST AFIN DE VERIFIER QUE LE CONTENU DES INPUTS APPARAISSENT BIEN -->
+      <!-- EN-DESSOUS, UNE div DE TEST AFIN DE VERIFIER QUE LE CONTENU DES INPUTS APPARAIT BIEN -->
 
       <div>
         <p v-if="displayError">
@@ -95,6 +95,7 @@ export default {
           options
         );
         const data = await response.json();
+        //this.$router.push("/"); <- ICI, IL SERAIT BIEN DE POUVOIR AUTOMATIQUEMENT REDIRIGER VERS LA PAGE DU FILM QU4ON VIENT DE CREER
       } else {
         displayError = true;
       }

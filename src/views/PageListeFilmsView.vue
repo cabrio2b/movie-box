@@ -17,6 +17,7 @@
         :firstname="element.firstname"
         :lastname="element.lastname"
         :likes="element.likes.length"
+        :postId="element._id"
       />
     </div>
   </section>
