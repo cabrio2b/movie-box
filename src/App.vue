@@ -14,13 +14,7 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    this.token = localStorage.getItem("savedUserToken");
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
-  },
-};
+export default {};
 </script>
 <style>
 #app {

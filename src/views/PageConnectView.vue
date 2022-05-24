@@ -21,13 +21,7 @@
               >Votre mot de passe</label
             >
             <input type="password" name="mdp" v-model="password" />
-            <button
-              @click="$router.push({ path: '/' })"
-              class="btnRouge"
-              type="submit"
-            >
-              Connexion
-            </button>
+            <button class="btnRouge" type="submit">Connexion</button>
           </form>
           <a href="#"><p>mot de passe oublié</p></a>
           <hr />
@@ -51,10 +45,20 @@ export default {
     showSubscription: String,
   },
 
-  mounted() {
+  beforeMount() {
     this.token = localStorage.getItem("savedUserToken");
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
+    //test de connexion à partir de la valeur du token sauvegardé
+    if (this.token != null && this.token != undefined && this.token != 0) {
+      //Appel du token du local storage
+
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+      this.connected = true;
+    } else {
+      this.token = undefined;
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+    }
   },
   data() {
     return {
@@ -65,6 +69,7 @@ export default {
       getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
+      tokenTemp: undefined,
     };
   },
 
@@ -102,7 +107,7 @@ export default {
     },
 
     saveUserToken() {
-      console.log("entrée dans la méthode saveUserToken, avec le token: ");
+      console.log("Entrée dans la méthode saveUserToken, avec le token: ");
       console.log(this.token);
       localStorage.setItem("savedUserToken", this.token);
     },
