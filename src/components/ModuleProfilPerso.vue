@@ -1,11 +1,17 @@
 <template>
-  <div id="profilInfo">
-    <button @click="changeMyProfil">Modifier</button>
-    <h5>NOM: {{ fistname }}</h5>
-    <h5>PRENOM: {{ lastname }}</h5>
-    <h5>EMAIL : {{ email }}</h5>
-    <!--  <h5>AGE: {{ age }} ans</h5> -->
-  </div>
+  <section id="profil-container">
+    <div id="profilArea">
+      <div id="profilPhoto">
+        <img src="" />
+      </div>
+      <div id="profilInfo">
+        <h2>PROFIL {{ lastname }} - {{ firstname }}</h2>
+        <h3>NOM: {{ fistname }}</h3>
+        <h3>PRENOM: {{ lastname }}</h3>
+        <p>EMAIL: {{ email }}</p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>

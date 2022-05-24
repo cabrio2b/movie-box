@@ -1,56 +1,67 @@
 <template>
-  <ModuleHeader />
-  <ModuleBandeauUtilisateurs />
-  <section id="profil-container">
-    <div id="profilArea">
-      <div id="profilPhoto">
-        <img src="" />
-        />
-        <button>Changer</button>
-      </div>
-      <br />
-
-      <br />
-      <div id="profilFriends">
-        <input type="text" />
-        <button @click="addFriends">Ajouter</button>
-        <h3>AMIS</h3>
-        <ul></ul>
-      </div>
-    </div>
-
-    <div id="actualityArea">
-      <div id="actuLink">
-        <h2>MON FIL D'ACTUALITE</h2>
-      </div>
-      <ul></ul>
-    </div>
-    <div id="favoriteArea">
-      <div id="favoriteStyle">
-        <button>Ajouter</button>
-        <h2>STYLES FAVORIS</h2>
-        <ul></ul>
-      </div>
-      <br />
-      <div id="favoriteMovies">
-        <button>Ajouter</button>
-        <h2>MES FILMS FAVORIS</h2>
-        <ul></ul>
-      </div>
-    </div>
+  <section>
+    <ModuleHeader />
+    <ModuleBandeauUtilisateurs v-if="!connected" />
+    <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
+    <button @click="getProfilInfo">Recherche</button>
+    <ModuleProfilPerso
+      v-for="element in pageProfilData"
+      :key="element._id"
+      :firstname="element.firstname"
+      :lastname="element.lastname"
+      :email="element.email"
+    />
+    <ModuleFooter />
   </section>
-  <ModuleFooter />
 </template>
 
 <script>
 import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
+import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
+import ModuleProfilPerso from "@/components/ModuleProfilPerso.vue";
 export default {
   components: {
     ModuleHeader,
     ModuleBandeauUtilisateurs,
+    ModuleBandeauUtilisateursConnecter,
     ModuleFooter,
+    ModuleProfilPerso,
+  },
+  data() {
+    return {
+      firstname: "",
+      lastname: "",
+      email: "",
+      pageProfilData: [],
+      connected: undefined,
+    };
+  },
+
+  methods: {
+    async getProfilInfo() {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "bearer token",
+        },
+        Body: {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+        },
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/user",
+        options
+      );
+      const data = await response.json();
+      this.pageProfilData = data.user;
+      console.log(data);
+      console.log(this.pageProfilData);
+    },
   },
 };
 </script>
@@ -68,8 +79,7 @@ export default {
 }
 
 #profilInfo {
-  background-color: #c4c4c4;
-  border: 2px solid #d55b5b;
+  border: 2px solid black;
   opacity: 0.9;
   border-radius: 8%;
   width: 11em;
@@ -97,29 +107,13 @@ export default {
   width: 100%;
 }
 
-/*----------------------- Partie Fil d'actualité -----------*/
-
-#actualityArea {
-  width: 60%;
-}
-
-#actuLink {
-  background-color: #c4c4c4;
-  border: 2px solid #d55b5b;
-  opacity: 0.8;
-  border-radius: 8%;
-  width: 50em;
-  height: 4em;
-}
-
 /*----------------------- Partie Favories ------------------*/
 #favoryArea {
   width: 20%;
 }
 
 #favoriteStyle {
-  background-color: #c4c4c4;
-  border: 2px solid #d55b5b;
+  border: 2px solid black;
   opacity: 0.9;
   border-radius: 8%;
   width: 11em;
