@@ -50,8 +50,8 @@ const routes = [
   },
 
   {
-    path: "/Profil",
-    name: "PageProfil",
+    path: "/profil",
+    name: "pageProfil",
     component: PageProfilView,
   },
   /*   {
