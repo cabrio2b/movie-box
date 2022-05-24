@@ -5,7 +5,7 @@
     <router-link to="/test">| Test |</router-link>
     <router-link to="/page-film">| Page Film |</router-link>
     <!-- <router-link to="/FilActu">| Fil d'Actu |</router-link>-->
-    <!-- <router-link to="/PageProfilView">Page Profil</router-link> -->
+    <router-link to="/PageProfilView">Page Profil</router-link>
     <!-- <router-link to="/fiche-film">Fiche_Film</router-link> -->
     <!-- <router-link to="/test-crea-user">| Test Crea User |</router-link> -->
     <router-link to="/recup">| Test Récup Données |</router-link>
@@ -14,13 +14,7 @@
 </template>
 
 <script>
-export default {
-  mounted() {
-    this.token = localStorage.getItem("savedUserToken");
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
-  },
-};
+export default {};
 </script>
 <style>
 #app {
