@@ -81,7 +81,7 @@ export default {
     },
     disconnect() {
       localStorage.removeItem("savedUserToken");
-      
+      window.location.reload();
     },
   },
 };

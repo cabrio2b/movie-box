@@ -1,5 +1,4 @@
 <template>
-  <p>si non connecter :</p>
   <div id="bandeauUtilisateursContainer">
     <div class="decoPellicule"></div>
     <div class="bandeauUtilisateurs flex">
@@ -17,7 +16,6 @@
     </div>
     <div class="decoPellicule"></div>
   </div>
-  <p>si connecter :</p>
 </template>
 
 <script>

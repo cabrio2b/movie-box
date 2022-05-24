@@ -33,17 +33,21 @@ import ModuleFooter from "@/components/ModuleFooter.vue";
 import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
 
 export default {
-  mounted() {
-    //Appel du token du local storage
+  beforeMount() {
     this.token = localStorage.getItem("savedUserToken");
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
-    //test de connexion à partri de la valeur du token sauvegardé
-    if (this.token != undefined && this.token != null && this.token != "") {
+    //test de connexion à partir de la valeur du token sauvegardé
+    if (this.token != null && this.token != undefined && this.token != 0) {
+      //Appel du token du local storage
+
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
       this.connected = true;
+    } else {
+      this.token = undefined;
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
     }
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
+
     // Lancement auto de la fonction d'acutalisatin du fil actu
     this.getFilActu();
   },

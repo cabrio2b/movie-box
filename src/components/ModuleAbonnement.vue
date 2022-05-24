@@ -114,6 +114,10 @@ export default {
       );
       const data = await response.json();
       // console.log(response);
+
+      localStorage.setItem("savedUserToken", this.token);
+
+      this.$router.push("/connect");
     },
   },
 };

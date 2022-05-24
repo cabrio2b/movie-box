@@ -21,32 +21,13 @@
               >Votre mot de passe</label
             >
             <input type="password" name="mdp" v-model="password" />
-            <button
-              @click="$router.push({ path: '/' })"
-              class="btnRouge"
-              type="submit"
-            >
-              Connexion
-            </button>
+            <button class="btnRouge" type="submit">Connexion</button>
           </form>
           <a href="#"><p>mot de passe oublié</p></a>
           <hr />
           <button @click="btnAbonnement" class="btnGris" type="">
             s'abonner
           </button>
-        </div>
-        <!-- EN-DESSOUS, UNE div QUI SERT AUX TESTS : affichage du succès de connexion + token + bouton d'affichage des infos de l'utilisateur connecté -->
-        <div id="divTestConnectAndDisplayUserData">
-          <p v-if="result === true" class="success">
-            Connexion réussie
-            <br />
-            Token: {{ token }}
-          </p>
-          <p v-else-if="result === false" class="error">Connexion échouée</p>
-          <ModuleDisplayUserData
-            v-if="token != undefined"
-            :token="this.token"
-          />
         </div>
 
         <div class="decoRight"></div>
@@ -64,10 +45,20 @@ export default {
     showSubscription: String,
   },
 
-  mounted() {
+  beforeMount() {
     this.token = localStorage.getItem("savedUserToken");
-    console.log("Affichage du token local récupéré automatiquement :");
-    console.log(this.token);
+    //test de connexion à partir de la valeur du token sauvegardé
+    if (this.token != null && this.token != undefined && this.token != 0) {
+      //Appel du token du local storage
+
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+      this.connected = true;
+    } else {
+      this.token = undefined;
+      console.log("Affichage du token local récupéré automatiquement :");
+      console.log(this.token);
+    }
   },
   data() {
     return {
@@ -78,6 +69,7 @@ export default {
       getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
+      tokenTemp: undefined,
     };
   },
 
@@ -108,10 +100,14 @@ export default {
         this.token = data.token;
       }
       this.saveUserToken();
+
+      if (this.token != undefined && this.token != null && this.token != "") {
+        this.$router.push("/");
+      }
     },
 
     saveUserToken() {
-      console.log("entrée dans la méthode saveUserToken, avec le token: ");
+      console.log("Entrée dans la méthode saveUserToken, avec le token: ");
       console.log(this.token);
       localStorage.setItem("savedUserToken", this.token);
     },
