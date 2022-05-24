@@ -14,6 +14,10 @@
       <p>{{ firstname }} {{ lastname }}</p>
       <p>{{ post }}</p>
     </div>
+    <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
+    <div class="allComments">
+      <!--  <ModuleAffichageCommentaires v-for="comm in allComms"/>  -->
+    </div>
     <div class="newComment">
       <!-- Bouton pour afficher la zone de commentaire -->
       <button
@@ -44,6 +48,7 @@ import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
 //import ModuleInfoFilm from "@/components/ModuleInfoFilm.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
+import ModuleAffichageCommentaires from "@/components/ModuleAffichageCommentaires.vue";
 
 export default {
   beforeMount() {
@@ -81,6 +86,7 @@ export default {
     ModuleBandeauUtilisateurs,
     //ModuleInfoFilm,
     ModuleFooter,
+    ModuleAffichageCommentaires,
   },
 
   data() {
