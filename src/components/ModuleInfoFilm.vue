@@ -5,12 +5,17 @@
     </div>
     <div class="containerCritique bgCouleurPrincipale">
       <div class="containerNotation">
-        <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
+        <p class="notation textCouleurPrincipale">{{ likes }} j'aime
+          <button class="btnLike" @click="addLike"/>
+        </p>
         <p class="note">{{ firstname }} {{ lastname }}</p>
       </div>
-      <p class="critique">
-        {{ post }}
-      </p>
+      <p class="critique">{{ post }}</p>
+      <input type="text" placeholder="Votre commentaire" id="comment" class="commentaire" v-model="comment"/>
+      <button @click="Commenter">Envoyer</button>
+      <div class="newPost">
+      <p class="postComment">{{comment}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,14 +29,38 @@ export default {
     lastname: String,
     firstname: String,
     likes: Number,
+    postId: String,
   },
   data() {
-    return {};
+    return {
+      comment: "",
+    };
   },
   methods: {
     addLike() {
       this.likes += 1;
     },
+
+    async commenter() {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${this.token}`,
+        },
+        body: JSON.stringify({
+            postId: this.postId,
+            comment: this.comment,
+        }) 
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/post/comment",
+        options
+      );
+      const data = await response.json();
+     
+    },
+    
   },
 };
 </script>
@@ -87,4 +116,13 @@ export default {
 .note {
   flex-grow: 3;
 }
+
+/* .btnLike {
+  background-image: url("@/assets/imageLikeRouge.webp");
+}
+
+.btnLike:hover {
+  background-image: url("@/assets/imageLikeSurvol.webp");
+} */
+
 </style>

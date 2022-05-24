@@ -19,7 +19,9 @@
           <p>{like} film(s) aimé(s)</p>
         </div>
         <div class="ajoutFilm">
-          <div id="btnajoutFilm" class="btnajoutFilm"></div>
+          <a @click="$router.push({ path: '/AddFilm' })">
+            <div id="btnajoutFilm" class="btnajoutFilm"></div>
+          </a>
           <p>ajouter un film</p>
         </div>
       </div>

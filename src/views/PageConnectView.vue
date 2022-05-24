@@ -69,7 +69,6 @@ export default {
       getVueModule: this.showSubscription === "true" ?? false,
       result: null,
       token: undefined,
-      tokenTemp: undefined,
     };
   },
 
