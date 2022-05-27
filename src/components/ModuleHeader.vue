@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="containerHeader">
-      <a @click="increment">
+      <a @click="clickLogo">
         <img class="logo" src="@/assets/logoMb.webp" />
       </a>
       <h1 class="textCouleurPrincipale">
@@ -20,12 +20,19 @@ export default {
     };
   },
   methods: {
+    retourPageListeFilms() {
+      this.$router.push("/");
+    },
     increment() {
       this.counter++;
 
       if (this.counter % 10 === 0) {
         this.$emit("dizaine-de-click", this.counter);
       }
+    },
+    clickLogo() {
+      this.retourPageListeFilms();
+      this.increment();
     },
   },
 };
