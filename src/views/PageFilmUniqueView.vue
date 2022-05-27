@@ -17,13 +17,12 @@
     <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
     <div class="allComments">
       <h3>Commentaires postés sur ce film :</h3>
-      <p v-for="comm in comments" :key="comm.id">{{ comm.content }}</p>
-      <!--  <ModuleAffichageCommentaires
-        v-for="(comm, index) in allComms"
+      <!--   <p v-for="comm in allComms" :key="comm.id">{{ comm.content }}</p>   -->
+      <ModuleAffichageCommentaires
+        v-for="comm in allComms"
         :key="comm.id"
-        :comments="comm"
-        :index="index"
-      />   -->
+        :comm="comm"
+      />
     </div>
     <div class="newComment">
       <!-- Bouton pour afficher la zone de commentaire -->
@@ -77,10 +76,13 @@ export default {
 
     console.log("Affichage de filmTitle");
     console.log(this.filmTitle);
-
+    console.log("Affichage de l'index :");
+    console.log(this.index);
+    this.indexNumber = Number(this.index);
+    this.getAllComments();
     console.log("Affichage de allComms :");
-    this.allComms = this.comments;
     console.log(this.allComms);
+    //this.allComms = this.comments;
   },
 
   props: {
@@ -94,6 +96,7 @@ export default {
     date: String,
     content: Array,
     objet: Object,
+    index: String,
   },
 
   components: {
@@ -111,6 +114,7 @@ export default {
       recupFetch: [],
       testJson: undefined,
       commentaire: "",
+      indexNumber: undefined,
     };
   },
 
@@ -143,7 +147,7 @@ export default {
       //const data = await response.json();
     },
 
-    /*     async getAllComments() {
+    async getAllComments() {
       const options = {
         method: "GET",
         headers: {
@@ -155,8 +159,10 @@ export default {
         options
       );
       const data = await response.json();
-      this.recupFetch = data;
-    }, */
+      this.allComms = data.posts[this.indexNumber].comments;
+      console.log("Affichage de allComms en fin de method :");
+      console.log(this.allComms);
+    },
   },
 };
 </script>

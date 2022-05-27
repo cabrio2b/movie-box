@@ -6,7 +6,7 @@
     <ModuleBandeauUtilisateurs v-if="!connected" />
     <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
 
-    <div class="divTest">
+    <!--     <div class="divTest">
       <h2>Test d'affichage directement depuis PageListeFilmsView</h2>
       <div v-for="element in filActuFilmData" :key="element._id">
         <p>{{ element.title }}</p>
@@ -14,12 +14,12 @@
           <p>{{ commentaire.content }}</p>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Contenaire Module des minis-fiches de film -->
     <div class="containerFilms flex">
       <!-- Module des minis-fiches de film -->
       <ModuleMiniFicheFilm
-        v-for="element in filActuFilmData"
+        v-for="(element, index) in filActuFilmData"
         :key="element._id"
         :filmTitle="element.title"
         :post="element.content"
@@ -29,6 +29,7 @@
         :postId="element._id"
         :comments="element.comments"
         :date="element.date"
+        :index="index"
       />
     </div>
   </section>
