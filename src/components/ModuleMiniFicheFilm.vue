@@ -13,6 +13,7 @@
         content: this.allThisFilmComms,
         post: this.post,
         index: this.index,
+        postId: this.postId,
       },
     }"
   >
