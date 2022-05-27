@@ -128,7 +128,7 @@ export default {
         "Entrée dans méthode postComment avec les valeurs suivante : token | postID | content"
       );
 
-      console.log(this.token, this.postId, this.content);
+      console.log(this.token, this.postId, this.commentaire);
       const options = {
         method: "POST",
         headers: {
