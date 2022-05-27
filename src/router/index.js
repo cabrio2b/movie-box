@@ -41,6 +41,7 @@ const routes = [
     path: "/",
     name: "accueil",
     component: PageListeFilmsView,
+    props: true,
   },
 
   {
@@ -77,6 +78,7 @@ const routes = [
     path: "/AddFilm",
     name: "AddFilm",
     component: PageNewFilmView,
+    props: true,
   },
 ];
 

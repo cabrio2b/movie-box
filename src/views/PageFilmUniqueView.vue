@@ -11,12 +11,19 @@
     <div class="PageInfoFilm-container">
       <h1>{{ filmTitle }}</h1>
       <p>{{ likes }}</p>
-      <p>{{ firstname }} {{ lastname }}</p>
+      <p>Fiche créée par :{{ firstname }} {{ lastname }}</p>
       <p>{{ post }}</p>
     </div>
     <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
     <div class="allComments">
-      <!--  <ModuleAffichageCommentaires v-for="comm in allComms"/>  -->
+      <h3>Commentaires postés sur ce film :</h3>
+      <p v-for="comm in comments" :key="comm.id">{{ comm.content }}</p>
+      <!--  <ModuleAffichageCommentaires
+        v-for="(comm, index) in allComms"
+        :key="comm.id"
+        :comments="comm"
+        :index="index"
+      />   -->
     </div>
     <div class="newComment">
       <!-- Bouton pour afficher la zone de commentaire -->
@@ -33,7 +40,7 @@
           cols="30"
           rows="10"
           placeholder="Entrez ici votre commentaire !"
-          v-model="content"
+          v-model="commentaire"
         ></textarea>
         <button @click="postComment">Valider le commentaire</button>
       </div>
@@ -70,6 +77,10 @@ export default {
 
     console.log("Affichage de filmTitle");
     console.log(this.filmTitle);
+
+    console.log("Affichage de allComms :");
+    this.allComms = this.comments;
+    console.log(this.allComms);
   },
 
   props: {
@@ -79,6 +90,10 @@ export default {
     lastname: String,
     post: String,
     postId: String,
+    comments: Array,
+    date: String,
+    content: Array,
+    objet: Object,
   },
 
   components: {
@@ -91,8 +106,11 @@ export default {
 
   data() {
     return {
-      content: "",
       displayCommentArea: false,
+      allComms: [],
+      recupFetch: [],
+      testJson: undefined,
+      commentaire: "",
     };
   },
 
@@ -115,15 +133,30 @@ export default {
         },
         body: JSON.stringify({
           postId: this.postId,
-          content: this.content,
+          content: this.commentaire,
         }),
       };
       const response = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/moviebox/post/comment",
         options
       );
-      const data = await response.json();
+      //const data = await response.json();
     },
+
+    /*     async getAllComments() {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts",
+        options
+      );
+      const data = await response.json();
+      this.recupFetch = data;
+    }, */
   },
 };
 </script>

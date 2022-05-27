@@ -4,7 +4,15 @@
     class="containerFilm"
     :to="{
       name: 'LeFilm',
-      params: { filmTitle, firstname, lastname, likes, post, postId },
+      params: {
+        filmTitle: this.filmTitle,
+        firstname: this.firstname,
+        lastname: this.lastname,
+        likes: this.likes,
+        comments: this.comments,
+        content: this.allThisFilmComms,
+        post: this.post,
+      },
     }"
   >
     <!--  <router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">  -->
@@ -28,6 +36,10 @@
 
 <script>
 export default {
+  /*   onMount() {
+    this.getThisFilmComments();
+  }, */
+
   props: {
     filmTitle: String,
     post: String,
@@ -36,14 +48,40 @@ export default {
     firstname: String,
     likes: Number,
     postId: String,
+    comments: Array,
+    date: String,
+    content: Array,
+    index: Number,
   },
   data() {
-    return {};
+    return {
+      allThisFilmComms: [],
+      thisFilmMainPost: "",
+    };
   },
   methods: {
     addLike() {
       this.likes += 1;
     },
+
+    /*  async getThisFilmComments() {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts[" +
+          this.index +
+          "]",
+        options
+      );
+      const data = await response.json();
+      console.log("Log de data et thisFilmMainPost");
+      console.log(data);
+      this.allThisFilmComms = data.comments;
+    }, */
   },
 };
 </script>
