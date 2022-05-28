@@ -106,8 +106,9 @@ export default {
 }
 .imageFilm {
   background-image: url(@/assets/affiche_titanic.jpg);
-  background-size: 100% auto;
-  height: 100%;
+  background-size: 102% auto;
+    /* height: 91%; */
+    width: 208px;
 }
 .imageFilm:hover {
   filter: opacity(50%);
