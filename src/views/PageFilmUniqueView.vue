@@ -15,22 +15,31 @@
       <div class="PageInfoFilm-container">
         <p v-if="this.post != undefined">{{ post }}</p>
         <p v-else>{{ localPost }}</p>
-        <p class="auteur" v-if="this.firstname != undefined && this.lastname != undefined">
+        <p
+          class="auteur"
+          v-if="this.firstname != undefined && this.lastname != undefined"
+        >
           Fiche créée par : {{ firstname }} {{ lastname }}
         </p>
-        <p class="auteur" v-else>Fiche créée par : {{ localFirstname }} {{ localLastname }}</p>
-        <div class="like" v-if="this.likes != undefined">
+        <p class="auteur" v-else>
+          Fiche créée par : {{ localFirstname }} {{ localLastname }}
+        </p>
+
+        <div class="like">
           <img src="@/assets/imageLikeNumero.webp" alt="" />
           <p>
-            {{ likes }}
+            {{ likesNumber + userLikes }}
           </p>
         </div>
-        <div class="like" v-else>
-          <img src="@/assets/imageLikeNumero.webp" alt="" />
-          <p>
-            {{ localLikes }}
-          </p>
-        </div>
+
+        <!-- ICI LE BOUTON POUR AJOUTER UN LIKE -->
+        <button class="likeBtn" v-if="!this.dejaLike" @click="postLike">
+          J'aime ce film !
+        </button>
+        <!-- ICI LE BOUTON POUR ENLEVER UN LIKE. Ou pas, désolé. Un jour peut-être -->
+        <!-- <button class="likeBtn" v-if="this.dejaLike" @click="retirerLike">
+          Je n'aime plus ce film.
+        </button> -->
       </div>
     </div>
 
@@ -104,8 +113,10 @@ export default {
 
     if (this.likes) {
       localStorage.setItem("@likes", this.likes);
+      this.likesNumber = Number(this.likes);
     } else {
       this.localLikes = localStorage.getItem("@likes");
+      this.likesNumber = Number(this.localLikes);
     }
 
     if (this.firstname) {
@@ -204,6 +215,9 @@ export default {
       localLikes: undefined,
       localPost: undefined,
       localIndex: undefined,
+      dejaLike: false,
+      userLikes: 0,
+      likesNumber: undefined,
     };
   },
 
@@ -236,6 +250,34 @@ export default {
       //const data = await response.json();
     },
 
+    // Poster un "like" :
+
+    async postLike() {
+      console.log(
+        "Entrée dans méthode postLike avec les valeurs suivante : token | postID "
+      );
+
+      console.log(this.token, this.postId);
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${this.token}`,
+        },
+        body: JSON.stringify({
+          postId: this.postId,
+        }),
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/post/like",
+        options
+      );
+
+      this.dejaLike = true;
+      this.userLikes += 1;
+      //const data = await response.json();
+    },
+
     async getAllComments() {
       const options = {
         method: "GET",
@@ -257,7 +299,6 @@ export default {
 </script>
 
 <style scoped>
-
 #containerFilm {
   gap: 35px;
   flex-direction: initial;
@@ -295,6 +336,6 @@ p {
   text-align: right;
 }
 .allComments {
-margin: 50px;
+  margin: 50px;
 }
 </style>
