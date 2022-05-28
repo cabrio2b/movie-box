@@ -48,7 +48,9 @@ input {
   border-radius: 5px;
   padding: 5px 15px;
 }
-
+#body {
+  margin: 0 3%;
+}
 .flex {
   display: flex;
 }

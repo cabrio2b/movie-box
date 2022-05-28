@@ -111,9 +111,7 @@ export default {
 </script>
 
 <style scoped>
-#body {
-  margin: 0 3%;
-}
+
 .containerFilms {
   gap: 25px;
   flex-direction: initial;

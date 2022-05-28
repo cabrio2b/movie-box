@@ -6,20 +6,33 @@
     <ModuleBandeauUtilisateurs />
 
     <!-- Contenaire Module des Infos page de films -->
-    <div class="imageFilm"></div>
-
-    <div class="PageInfoFilm-container">
-      <h1 v-if="this.filmTitle != undefined">{{ filmTitle }}</h1>
-      <h1 v-else>{{ localFilmTitle }}</h1>
-      <p v-if="this.likes != undefined">{{ likes }}</p>
-      <p v-else>{{ localLikes }}</p>
-      <p v-if="this.firstname != undefined && this.lastname != undefined">
-        Fiche créée par :{{ firstname }} {{ lastname }}
-      </p>
-      <p v-else>Fiche créée par :{{ localFirstname }} {{ localLastname }}</p>
-      <p v-if="this.post != undefined">{{ post }}</p>
-      <p v-else>{{ localPost }}</p>
+    <div id="containerFilm" class="flex">
+      <div class="imageFilm">
+        <h1 v-if="this.filmTitle != undefined">{{ filmTitle }}</h1>
+        <h1 v-else>{{ localFilmTitle }}</h1>
+      </div>
+      <div class="PageInfoFilm-container">
+        <p v-if="this.post != undefined">{{ post }}</p>
+        <p v-else>{{ localPost }}</p>
+        <p class="auteur" v-if="this.firstname != undefined && this.lastname != undefined">
+          Fiche créée par : {{ firstname }} {{ lastname }}
+        </p>
+        <p class="auteur" v-else>Fiche créée par : {{ localFirstname }} {{ localLastname }}</p>
+        <div class="like" v-if="this.likes != undefined">
+          <img src="@/assets/imageLikeNumero.webp" alt="" />
+          <p>
+            {{ likes }}
+          </p>
+        </div>
+        <div class="like" v-else>
+          <img src="@/assets/imageLikeNumero.webp" alt="" />
+          <p>
+            {{ localLikes }}
+          </p>
+        </div>
+      </div>
     </div>
+
     <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
     <div class="allComments">
       <h3>Commentaires postés sur ce film :</h3>
@@ -33,6 +46,7 @@
     <div class="newComment">
       <!-- Bouton pour afficher la zone de commentaire -->
       <button
+        class="btnRouge"
         id="commentBtn"
         v-if="!displayCommentArea"
         @click="displayCommentArea = true"
@@ -229,18 +243,44 @@ export default {
 </script>
 
 <style scoped>
-#body {
-  margin: 0 3%;
-}
-.PageInfoFilm-container {
-  gap: 25px;
+
+#containerFilm {
+  gap: 35px;
   flex-direction: initial;
   justify-content: center;
+  align-items: flex-end;
 }
-
 .imageFilm {
+  width: 20%;
+  height: 300px;
   background-image: url(@/assets/affiche_titanic.jpg);
   background-size: 100% auto;
-  height: 100%;
+}
+.imageFilm h1 {
+  color: white;
+  margin: 260px 0 0 14px;
+}
+.like img {
+  width: 60px;
+  margin-left: -60px;
+  margin-top: -60px;
+  width: 60px;
+}
+.like p {
+  color: white;
+  transform: rotate(10deg);
+  margin-left: -38px;
+  margin-top: -21px;
+  font-weight: 600;
+}
+p {
+  margin-left: 10px;
+}
+.auteur {
+  font-style: italic;
+  text-align: right;
+}
+.allComments {
+margin: 50px;
 }
 </style>
