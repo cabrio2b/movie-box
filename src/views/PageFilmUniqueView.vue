@@ -9,10 +9,16 @@
     <div class="imageFilm"></div>
 
     <div class="PageInfoFilm-container">
-      <h1>{{ filmTitle }}</h1>
-      <p>{{ likes }}</p>
-      <p>Fiche créée par :{{ firstname }} {{ lastname }}</p>
-      <p>{{ post }}</p>
+      <h1 v-if="this.filmTitle != undefined">{{ filmTitle }}</h1>
+      <h1 v-else>{{ localFilmTitle }}</h1>
+      <p v-if="this.likes != undefined">{{ likes }}</p>
+      <p v-else>{{ localLikes }}</p>
+      <p v-if="this.firstname != undefined && this.lastname != undefined">
+        Fiche créée par :{{ firstname }} {{ lastname }}
+      </p>
+      <p v-else>Fiche créée par :{{ localFirstname }} {{ localLastname }}</p>
+      <p v-if="this.post != undefined">{{ post }}</p>
+      <p v-else>{{ localPost }}</p>
     </div>
     <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
     <div class="allComments">
@@ -74,11 +80,61 @@ export default {
       console.log(this.token);
     }
 
-    console.log("Affichage de filmTitle");
-    console.log(this.filmTitle);
+    // Etape du localStorage
+    if (this.filmTitle) {
+      localStorage.setItem("@filmTitle", this.filmTitle);
+    } else {
+      this.localFilmTitle = localStorage.getItem("@filmTitle");
+    }
+
+    if (this.likes) {
+      localStorage.setItem("@likes", this.likes);
+    } else {
+      this.localLikes = localStorage.getItem("@likes");
+    }
+
+    if (this.firstname) {
+      localStorage.setItem("@firstname", this.firstname);
+    } else {
+      this.localFirstname = localStorage.getItem("@firstname");
+    }
+
+    if (this.lastname) {
+      localStorage.setItem("@lastname", this.lastname);
+    } else {
+      this.localLastname = localStorage.getItem("@lastname");
+    }
+
+    if (this.post) {
+      localStorage.setItem("@post", this.post);
+    } else {
+      this.localPost = localStorage.getItem("@post");
+    }
+
+    console.log("Affichage de filmTitle, likes, firstname, lastname, post :");
+    console.log(
+      this.filmTitle,
+      this.likes,
+      this.firstname,
+      this.lastname,
+      this.post
+    );
+
+    console.log(
+      "Affichage de localFilmTitle, localLikes, localFirstname, localLastname, localPost :"
+    );
+    console.log(
+      this.localFilmTitle,
+      this.localLikes,
+      this.localFirstname,
+      this.localLastname,
+      this.localPost
+    );
+
     console.log("Affichage de l'index :");
     console.log(this.index);
     this.indexNumber = Number(this.index);
+    // Récupération des commentaires pour ce film
     this.getAllComments();
     console.log("Affichage de allComms :");
     console.log(this.allComms);
@@ -115,6 +171,11 @@ export default {
       testJson: undefined,
       commentaire: "",
       indexNumber: undefined,
+      localFilmTitle: undefined,
+      localFirstname: undefined,
+      localLastname: undefined,
+      localLikes: undefined,
+      localPost: undefined,
     };
   },
 
