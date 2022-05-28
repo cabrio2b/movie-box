@@ -1,5 +1,5 @@
 <template>
-  <div class="oneComment">
+  <div class="oneComment bgCouleurPrincipale">
     <p>{{ comm.content }}</p>
     <p class="auteur">Posté par {{ comm.firstname }} {{ comm.lastname }}</p>
   </div>
@@ -14,8 +14,7 @@ export default {
 </script>
 
 <style scoped>
-.oneComment {
-  background-color: #00000015;
+.oneComment { 
   padding: 10px 20px;
   border-radius: 10px;
   margin: 10px 50px
