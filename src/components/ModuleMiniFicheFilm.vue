@@ -109,7 +109,7 @@ export default {
   background-size: 100% auto;
   height: 100%;
 }
-.imageFilm:active {
+.imageFilm:hover {
   filter: opacity(50%);
 }
 .imageFilm h2 {

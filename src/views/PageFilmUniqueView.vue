@@ -8,7 +8,7 @@
 
     <!-- Contenaire Module des Infos page de films -->
     <div id="containerFilm" class="flex">
-      <div class="imageFilm">
+      <div class="imageFilm containerFilm">
         <h1 v-if="this.filmTitle != undefined">{{ filmTitle }}</h1>
         <h1 v-else>{{ localFilmTitle }}</h1>
       </div>
@@ -60,7 +60,7 @@
           rows="10"
           placeholder="Entrez ici votre commentaire !"
           v-model="commentaire"
-        ></textarea>
+        ></textarea><br>
         <button @click="postComment">Valider le commentaire</button>
       </div>
     </div>
@@ -296,5 +296,13 @@ p {
 }
 .allComments {
 margin: 50px;
+}
+.containerFilm {
+  border-left: 10px solid #d30303;
+  height: 100%;
+}
+.containerFilm:hover {
+  border-left: 10px solid #808080;
+  
 }
 </style>
