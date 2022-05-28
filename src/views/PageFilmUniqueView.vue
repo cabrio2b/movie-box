@@ -3,7 +3,8 @@
   <ModuleHeader />
   <section id="body">
     <!-- Contenaire Module du Bandeau des utilisateur -->
-    <ModuleBandeauUtilisateurs />
+    <ModuleBandeauUtilisateurs v-if="!connected" />
+    <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
 
     <!-- Contenaire Module des Infos page de films -->
     <div class="imageFilm"></div>
@@ -23,7 +24,6 @@
     <!-- ICI UNE div QUI CONTIENDRA TOUS LES COMMENTAIRES SUR LE FILM (sous la forme d'un composant répété en v-for) -->
     <div class="allComments">
       <h3>Commentaires postés sur ce film :</h3>
-      <!--   <p v-for="comm in allComms" :key="comm.id">{{ comm.content }}</p>   -->
       <ModuleAffichageCommentaires
         v-for="comm in allComms"
         :key="comm.id"
@@ -58,7 +58,8 @@
 <script>
 import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
-//import ModuleInfoFilm from "@/components/ModuleInfoFilm.vue";
+import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
+
 import ModuleFooter from "@/components/ModuleFooter.vue";
 import ModuleAffichageCommentaires from "@/components/ModuleAffichageCommentaires.vue";
 
@@ -111,29 +112,41 @@ export default {
       this.localPost = localStorage.getItem("@post");
     }
 
-    console.log("Affichage de filmTitle, likes, firstname, lastname, post :");
+    if (this.index) {
+      localStorage.setItem("@index", this.index);
+      this.indexNumber = Number(this.index);
+    } else {
+      this.localIndex = localStorage.getItem("@index");
+      this.indexNumber = Number(this.localIndex);
+    }
+
+    console.log(
+      "Affichage de filmTitle, likes, firstname, lastname, post, index :"
+    );
     console.log(
       this.filmTitle,
       this.likes,
       this.firstname,
       this.lastname,
-      this.post
+      this.post,
+      this.index
     );
 
     console.log(
-      "Affichage de localFilmTitle, localLikes, localFirstname, localLastname, localPost :"
+      "Affichage de localFilmTitle, localLikes, localFirstname, localLastname, localPost, indexNumber :"
     );
     console.log(
       this.localFilmTitle,
       this.localLikes,
       this.localFirstname,
       this.localLastname,
-      this.localPost
+      this.localPost,
+      this.locaIndex
     );
 
     console.log("Affichage de l'index :");
     console.log(this.index);
-    this.indexNumber = Number(this.index);
+
     // Récupération des commentaires pour ce film
     this.getAllComments();
     console.log("Affichage de allComms :");
@@ -158,7 +171,7 @@ export default {
   components: {
     ModuleHeader,
     ModuleBandeauUtilisateurs,
-    //ModuleInfoFilm,
+    ModuleBandeauUtilisateursConnecter,
     ModuleFooter,
     ModuleAffichageCommentaires,
   },
@@ -176,6 +189,7 @@ export default {
       localLastname: undefined,
       localLikes: undefined,
       localPost: undefined,
+      localIndex: undefined,
     };
   },
 
