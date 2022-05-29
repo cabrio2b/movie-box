@@ -272,7 +272,7 @@ export default {
 }
 .imageFilm h1 {
   color: white;
-  margin: 260px 0 0 14px;
+  margin: 260px 0 15px 14px;
 }
 .like img {
   width: 60px;
@@ -303,6 +303,6 @@ margin: 50px;
 }
 .containerFilm:hover {
   border-left: 10px solid #808080;
-  
+
 }
 </style>
