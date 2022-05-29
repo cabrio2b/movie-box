@@ -40,7 +40,12 @@
         recherche Film dans MovieDataBase
       </button>
 
-      <ModuleResultatApiMovieDataBase />
+      <ModuleResultatApiMovieDataBase 
+      v-for="(element) in filmToDataBase"
+          :key="element.id"
+          :titleText="element.titleText"
+     
+      />
 
       <div>
         <p v-if="displayError">
@@ -112,15 +117,19 @@ export default {
         },
       };
 
-      fetch(
+      let getFilmsDataBase = await fetch(
         "https://moviesdatabase.p.rapidapi.com/titles/search/title/" +
           this.titreFilm +
           "?info=mini_info&limit=10&page=1&titleType=movie",
         options
       )
-        .then((response) => response.json())
-        .then((response) => console.log(response))
-        .catch((err) => console.error(err));
+        // .then((response) => response.json())
+        // .then((response) => console.log(response))
+        // .catch((err) => console.error(err));
+
+         let donneesFilmsDataBase = await getFilmsDataBase.json();
+      this.filmToDataBase = donneesFilmsDataBase.results;
+      console.log(this.filmToDataBase);
 
     },
 
