@@ -5,16 +5,23 @@
     </div>
     <div class="containerCritique bgCouleurPrincipale">
       <div class="containerNotation">
-        <p class="notation textCouleurPrincipale">{{ likes }} j'aime
-          <button class="btnLike" @click="addLike"/>
+        <p class="notation textCouleurPrincipale">
+          {{ likes }} j'aime
+          <button class="btnLike" @click="addLike" />
         </p>
         <p class="note">{{ firstname }} {{ lastname }}</p>
       </div>
       <p class="critique">{{ post }}</p>
-      <input type="text" placeholder="Votre commentaire" id="comment" class="commentaire" v-model="comment"/>
-      <button @click="Commenter">Envoyer</button>
+      <input
+        type="text"
+        placeholder="Votre commentaire"
+        id="comment"
+        class="commentaire"
+        v-model="comment"
+      />
+      <button @click="commenter">Envoyer</button>
       <div class="newPost">
-      <p class="postComment">{{comment}}</p>
+        <p class="postComment">{{ comment }}</p>
       </div>
     </div>
   </div>
@@ -46,21 +53,19 @@ export default {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${this.token}`,
+          Authorization: `Bearer ${this.token}`,
         },
         body: JSON.stringify({
-            postId: this.postId,
-            comment: this.comment,
-        }) 
+          postId: this.postId,
+          comment: this.comment,
+        }),
       };
       const response = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/moviebox/post/comment",
         options
       );
       const data = await response.json();
-     
     },
-    
   },
 };
 </script>
@@ -124,5 +129,4 @@ export default {
 .btnLike:hover {
   background-image: url("@/assets/imageLikeSurvol.webp");
 } */
-
 </style>

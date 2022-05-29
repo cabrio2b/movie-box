@@ -14,7 +14,7 @@
           v-model="filmTitle"
           required
           placeholder="Le Seigneur des agneaux IV : l'oreille du tibre"
-        />
+        /><br />
         <textarea
           name="inputFilmComment"
           cols="30"
@@ -22,10 +22,30 @@
           v-model="firstComment"
           required
           placeholder="Oui, c'est bien ici que vous pourrez entrer le texte qui figurera sur la fiche que vous souhaitez créer... top, non ?"
-        ></textarea>
-        <button>BANCO !</button>
+        ></textarea
+        ><br />
+        <button class="btnRouge">BANCO !</button>
       </form>
-      <!-- EN-DESSOUS, UNE div DE TEST AFIN DE VERIFIER QUE LE CONTENU DES INPUTS APPARAISSENT BIEN -->
+      <!-- EN-DESSOUS, UNE div DE TEST AFIN DE VERIFIER QUE LE CONTENU DES INPUTS APPARAIT BIEN -->
+
+      <p>recherche de film dans API MovieDataBase :</p>
+      <input
+        name="inputTitreFilm"
+        type="text"
+        v-model="titreFilm"
+        required
+        placeholder="Le Seigneur des agneaux IV : l'oreille du tibre"
+      /><br />
+      <button class="btnRouge" @click="rechercheFilmMovieDataBase">
+        recherche Film dans MovieDataBase
+      </button>
+
+      <ModuleResultatApiMovieDataBase 
+      v-for="(element) in filmToDataBase"
+          :key="element.id"
+          :titleText="element.titleText"
+     
+      />
 
       <div>
         <p v-if="displayError">
@@ -45,6 +65,8 @@ import ModuleHeader from "@/components/ModuleHeader.vue";
 import ModuleBandeauUtilisateurs from "@/components/ModuleBandeauUtilisateurs.vue";
 import ModuleFooter from "@/components/ModuleFooter.vue";
 import ModuleBandeauUtilisateursConnecter from "@/components/ModuleBandeauUtilisateursConnecter.vue";
+import ModuleResultatApiMovieDataBase from "@/components/ModuleResultatApiMovieDataBase.vue";
+
 export default {
   beforeMount() {
     this.token = localStorage.getItem("savedUserToken");
@@ -61,12 +83,15 @@ export default {
       console.log(this.token);
     }
   },
+
   components: {
     ModuleBandeauUtilisateurs,
     ModuleHeader,
     ModuleFooter,
     ModuleBandeauUtilisateursConnecter,
+    ModuleResultatApiMovieDataBase,
   },
+
   data() {
     return {
       result: null,
@@ -74,9 +99,40 @@ export default {
       firstComment: "",
       filmTitle: "",
       displayError: false,
+      titreFilm: "",
+      filmToDataBase: [],
     };
   },
+
   methods: {
+    async rechercheFilmMovieDataBase() {
+      console.log(this.titreFilm);
+
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+          "X-RapidAPI-Key":
+            "d124a99380mshbcc0cfee06f7160p1a7fa3jsn1708f0ed2694",
+        },
+      };
+
+      let getFilmsDataBase = await fetch(
+        "https://moviesdatabase.p.rapidapi.com/titles/search/title/" +
+          this.titreFilm +
+          "?info=mini_info&limit=10&page=1&titleType=movie",
+        options
+      )
+        // .then((response) => response.json())
+        // .then((response) => console.log(response))
+        // .catch((err) => console.error(err));
+
+         let donneesFilmsDataBase = await getFilmsDataBase.json();
+      this.filmToDataBase = donneesFilmsDataBase.results;
+      console.log(this.filmToDataBase);
+
+    },
+
     async createNewFilmPost() {
       if (this.filmTitle != "" && this.firstComment != "") {
         const options = {
@@ -95,6 +151,7 @@ export default {
           options
         );
         const data = await response.json();
+        //this.$router.push("/"); <- ICI, IL SERAIT BIEN DE POUVOIR AUTOMATIQUEMENT REDIRIGER VERS LA PAGE DU FILM QU4ON VIENT DE CREER
       } else {
         displayError = true;
       }

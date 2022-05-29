@@ -1,24 +1,47 @@
 <template>
-<router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">
-  <div>
-    <div class="imageFilm">
-      <h2>{{ filmTitle }}</h2>
-    </div>
-    <div class="containerCritique bgCouleurPrincipale">
-      <div class="containerNotation">
-        <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
-        <p class="note">{{ firstname }} {{ lastname }}</p>
+  <!-- ROUTEUR VERS LA PAGE EN COURS DE TEST -->
+  <router-link
+    class="containerFilm"
+    :to="{
+      name: 'LeFilm',
+      params: {
+        filmTitle: this.filmTitle,
+        firstname: this.firstname,
+        lastname: this.lastname,
+        likes: this.likes,
+        comments: this.comments,
+        content: this.allThisFilmComms,
+        post: this.post,
+        index: this.index,
+        postId: this.postId,
+      },
+    }"
+  >
+    <!--  <router-link class="containerFilm" :to="{name:'PageFilm', params: {filmTitle, firstname, lastname, likes, post}}">  -->
+
+    <div>
+      <div class="imageFilm">
+        <h2>{{ filmTitle }}</h2>
       </div>
-      <p class="critique">
-        {{ post }}
-      </p>
+      <div class="containerCritique bgCouleurPrincipale">
+        <div class="containerNotation">
+          <p class="notation textCouleurPrincipale">{{ likes }} j'aime</p>
+          <p class="note">{{ firstname }} {{ lastname }}</p>
+        </div>
+        <p class="critique">
+          {{ post }}
+        </p>
+      </div>
     </div>
-  </div>
-</router-link>
+  </router-link>
 </template>
 
 <script>
 export default {
+  /*   onMount() {
+    this.getThisFilmComments();
+  }, */
+
   props: {
     filmTitle: String,
     post: String,
@@ -26,14 +49,41 @@ export default {
     lastname: String,
     firstname: String,
     likes: Number,
+    postId: String,
+    comments: Array,
+    date: String,
+    content: Array,
+    index: Number,
   },
   data() {
-    return {};
+    return {
+      allThisFilmComms: [],
+      thisFilmMainPost: "",
+    };
   },
   methods: {
     addLike() {
       this.likes += 1;
     },
+
+    /*  async getThisFilmComments() {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const response = await fetch(
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts[" +
+          this.index +
+          "]",
+        options
+      );
+      const data = await response.json();
+      console.log("Log de data et thisFilmMainPost");
+      console.log(data);
+      this.allThisFilmComms = data.comments;
+    }, */
   },
 };
 </script>
@@ -56,10 +106,11 @@ export default {
 }
 .imageFilm {
   background-image: url(@/assets/affiche_titanic.jpg);
-  background-size: 100% auto;
-  height: 100%;
+  background-size: 102% auto;
+    /* height: 91%; */
+    width: 208px;
 }
-.imageFilm:active {
+.imageFilm:hover {
   filter: opacity(50%);
 }
 .imageFilm h2 {

@@ -6,17 +6,30 @@
     <ModuleBandeauUtilisateurs v-if="!connected" />
     <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
 
+    <!--     <div class="divTest">
+      <h2>Test d'affichage directement depuis PageListeFilmsView</h2>
+      <div v-for="element in filActuFilmData" :key="element._id">
+        <p>{{ element.title }}</p>
+        <div v-for="commentaire in element.comments" :key="commentaire">
+          <p>{{ commentaire.content }}</p>
+        </div>
+      </div>
+    </div> -->
     <!-- Contenaire Module des minis-fiches de film -->
     <div class="containerFilms flex">
       <!-- Module des minis-fiches de film -->
       <ModuleMiniFicheFilm
-        v-for="element in filActuFilmData"
+        v-for="(element, index) in filActuFilmData"
         :key="element._id"
         :filmTitle="element.title"
         :post="element.content"
         :firstname="element.firstname"
         :lastname="element.lastname"
         :likes="element.likes.length"
+        :postId="element._id"
+        :comments="element.comments"
+        :date="element.date"
+        :index="index"
       />
     </div>
   </section>
@@ -84,18 +97,21 @@ export default {
         options
       );
       const data = await response.json();
+      const dataPosts = data.posts;
       this.filActuFilmData = data.posts;
+      console.log("Affichage de data :");
       console.log(data);
-      console.log(this.filActuFilmData);
+      console.log("Affichage de data.posts :");
+      console.log(dataPosts);
+      console.log("Affichage de .comments :");
+      console.log(dataPosts[0].comments);
     },
   },
 };
 </script>
 
 <style scoped>
-#body {
-  margin: 0 3%;
-}
+
 .containerFilms {
   gap: 25px;
   flex-direction: initial;

@@ -1,6 +1,9 @@
 <template>
   <section id="viewTest">
     <button @click="testFetch">Tester API</button>
+    <div>
+      <p v-for="element in test" :key="element.id">{{ element.content }}</p>
+    </div>
   </section>
 </template>
 
@@ -14,7 +17,12 @@ export default {
       message: "",
       result: null,
       token: true,
+      test: [],
     };
+  },
+  props: {
+    indexFiche: String,
+    indexCommentaire: String,
   },
 
   methods: {
@@ -25,27 +33,14 @@ export default {
           "Content-Type": "application/json",
           //Authorization: "bearer token",
         },
-        /*        body: JSON.stringify({
-          posts: [],
-          page: Number,
-          totalPages: Number,
-          message: String,
-
-          page: Number,
-          limit: Number,
-        }), */
       };
       const response = await fetch(
         "https://social-network-api.osc-fr1.scalingo.io/moviebox/posts",
         options
       );
       const data = await response.json();
-      console.log(data);
-
-      /* this.result = data.success;
-      if (data.success === true) {
-        this.token = data.token;
-      } */
+      console.log(data.posts[0].comments);
+      this.test = data.posts[0].comments;
     },
   },
 };
