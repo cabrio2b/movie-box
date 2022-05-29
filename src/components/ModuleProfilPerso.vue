@@ -8,7 +8,7 @@
         <h2>PROFIL {{ lastname }} - {{ firstname }}</h2>
         <h3>NOM: {{ firstname }}</h3>
         <h3>PRENOM: {{ lastname }}</h3>
-        <p>User Id: {{ email }}</p>
+        <p>User Id: {{ userId }}</p>
       </div>
     </div>
   </section>
@@ -19,7 +19,7 @@ export default {
   props: {
     firstname: String,
     lastname: String,
-    email: String,
+    userId: String,
   },
 };
 </script>

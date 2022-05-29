@@ -9,8 +9,7 @@
         :key="element._id"
         :firstname="element.firstname"
         :lastname="element.lastname"
-        :email="element.userId"
-        data.firstname
+        :userId="element._id"
       />
       <button @click="getProfilInfo">Recherche</button>
     </div>
@@ -50,19 +49,16 @@ export default {
   },
   data() {
     return {
+      firstname: "",
+      lastname: "",
+      userId: "",
       pageProfilData: [],
       connected: undefined,
     };
   },
-  props: {
-    firstname: String,
-    lastname: String,
-    email: String,
-  },
 
   methods: {
     async getProfilInfo() {
-      alert(this.token);
       const options = {
         method: "GET",
         headers: {
