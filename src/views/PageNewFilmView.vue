@@ -43,8 +43,11 @@
       <ModuleResultatApiMovieDataBase 
       v-for="(element) in filmToDataBase"
           :key="element.id"
-          :titleText="element.titleText"
-     
+          :idFilm="element.id"
+          :titleText="element.titleText.text"
+          :releaseYear="element.releaseYear"
+          :primaryImage="element.primaryImage"
+          
       />
 
       <div>
@@ -120,7 +123,7 @@ export default {
       let getFilmsDataBase = await fetch(
         "https://moviesdatabase.p.rapidapi.com/titles/search/title/" +
           this.titreFilm +
-          "?info=mini_info&limit=10&page=1&titleType=movie",
+          "?info=base_info&limit=20&page=1&titleType=movie",
         options
       )
         // .then((response) => response.json())
