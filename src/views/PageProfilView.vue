@@ -5,13 +5,11 @@
     <ModuleBandeauUtilisateursConnecter v-if="connected" :token="this.token" />
     <div id="ProfilPersoContainer">
       <ModuleProfilPerso
-        v-for="element in pageProfilData"
-        :key="element._id"
-        :firstname="element.firstname"
-        :lastname="element.lastname"
-        :userId="element._id"
-      />
-      <button @click="getProfilInfo">Recherche</button>
+        :firstname="firstname"
+        :lastname="lastname"
+        :userId="_id"
+      >
+      </ModuleProfilPerso>
     </div>
   </section>
   <ModuleFooter />
@@ -49,9 +47,6 @@ export default {
   },
   data() {
     return {
-      firstname: "",
-      lastname: "",
-      userId: "",
       pageProfilData: [],
       connected: undefined,
     };
@@ -63,13 +58,12 @@ export default {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjhiOTM4OTEzNjMyMzAwMWI2ZjU3NTgiLCJpYXQiOjE2NTMzODA1NzUsImV4cCI6MTY1MzQ2Njk3NX0.Zj48HV6yJZ-B16zY7Tn2wCQ5n6n2eh27bUFNsuzhhl0",
+          Authorization: "Bearer this.token",
         },
       };
 
       const response = await fetch(
-        "https://social-network-api.osc-fr1.scalingo.io/moviebox/user",
+        "https://social-network-api.osc-fr1.scalingo.io/moviebox/demo/user",
         options
       );
       const data = await response.json();
